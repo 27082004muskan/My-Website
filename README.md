@@ -1,17 +1,30 @@
-<<<<<<< HEAD
-# React + Vite
+# Personal Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive React-based portfolio showcasing my skills, projects, certifications, and professional journey as a Full Stack Developer and Data Analyst.
 
-Currently, two official plugins are available:
+## 🌟 Live Demo
+[https://27082004muskan.github.io/My-Website](https://27082004muskan.github.io/My-Website)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
+- Responsive design with modern UI/UX
+- Interactive animations and smooth scrolling
+- Downloadable certificates
+- Contact form with success animations
+- Skills visualization and project showcase
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
+- **Frontend**: React.js, Tailwind CSS
+- **Icons**: Lucide React
+- **Build Tool**: Vite
+- **Deployment**: GitHub Pages
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-# My-Website
-Welcome to my personal website .
->>>>>>> bf377ed2094853431477a4aed274af087cb78c18
+## 📚 Sections
+- **Hero**: Introduction and overview
+- **Skills**: MERN Stack, Data Analytics, Programming Languages
+- **Experience**: SDE Intern at FinLED Project
+- **Projects**: Hotel Management, LMS, Data Analysis projects
+- **Certifications**: Web Development & Data Analytics certificates
+- **Activities**: Professional timeline (2022-2025)
+- **Contact**: Form with social links
+
+
