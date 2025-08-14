@@ -3,14 +3,14 @@ import { Calendar, Briefcase, ChevronRight, ChevronLeft, Star, Target, Award, Tr
 
 /**
  * Activities.jsx
- * Manual scrolling with scroll buttons - Professional version without emojis and no duplication
+ * Manual scrolling with scroll buttons - Professional version without emojis
  */
 
 const Activities = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
   const containerRef = useRef(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  
+  const [ setScrollY] = useState(0);
 
   // Individual refs for each year's scroll container
   const scrollRef2022 = useRef(null);
@@ -178,14 +178,14 @@ const Activities = () => {
           category: "Hackathon",
           color: "from-cyan-500 to-blue-500",
         },
-        {
-          title: "Markuti Case Study Competition",
-          description: "Semi-finalist in competition by MDI Gurgaon's Markuti Club",
-          date: "November",
-          icon: BarChart,
-          category: "Competition",
-          color: "from-amber-500 to-yellow-500",
-        },
+        // {
+        //   title: "Markuti Case Study Competition",
+        //   description: "Semi-finalist in competition by MDI Gurgaon's Markuti Club",
+        //   date: "November",
+        //   icon: BarChart,
+        //   category: "Competition",
+        //   color: "from-amber-500 to-yellow-500",
+        // },
       ],
       2025: [
         {
@@ -220,13 +220,13 @@ const Activities = () => {
           category: "Achievement",
           color: "from-emerald-500 to-green-500",
         },
-        {
-          title: "SDE Intern - FinLED Project",
-          description: "Revamped website UI, integrated ESG tools, enhanced full-stack performance",
-          date: "June - Present",
-          icon: Briefcase,
-          category: "Internship",
-          color: "from-green-500 to-emerald-500",
+         {
+          title: "XR Creator Hackathon Delhi",
+          description: "XR Creator Hackathon Meetup by Chhavi Garg",
+          date: "October",
+          icon: Zap,
+          category: "Hackathon",
+          color: "from-cyan-500 to-blue-500",
         },
         {
           title: "Flipkart Grid 2025",
@@ -252,14 +252,17 @@ const Activities = () => {
       });
     };
 
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
 
     const container = containerRef.current;
     if (container) {
       container.addEventListener("mousemove", handleMouseMove);
-  
+      window.addEventListener('scroll', handleScroll);
       return () => {
         container.removeEventListener("mousemove", handleMouseMove);
-       
+        window.removeEventListener('scroll', handleScroll);
       };
     }
   }, []);
