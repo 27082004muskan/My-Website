@@ -50,10 +50,10 @@ const Skills = () => {
       icon: Code,
       color: "#f59e0b",
       skills: [
-        { name: "Java", level: 88, Icon: Coffee, color: "#f89820" },
-        { name: "Python", level: 70, Icon: Code, color: "#3776ab" },
-        { name: "SQL", level: 85, Icon: Database, color: "#336791" },
-        { name: "C", level: 80, Icon: Terminal, color: "#a8b9cc" },
+        { name: "Java", level: 75, Icon: Coffee, color: "#f89820" },
+        { name: "Python", level: 88, Icon: Code, color: "#3776ab" },
+        { name: "SQL", level: 90, Icon: Database, color: "#336791" },
+        { name: "C", level: 70, Icon: Terminal, color: "#a8b9cc" },
       ]
     }
   ];
@@ -68,11 +68,10 @@ const Skills = () => {
               ...prev,
               [`${catIndex}-${skillIndex}`]: skill.level
             }));
-          }, (catIndex * 500) + (skillIndex * 100));
+          }, (catIndex * 300) + (skillIndex * 100));
         });
       });
-    }, 500);
-
+    }, 300);
     return () => clearTimeout(timer);
   }, []);
 
@@ -80,12 +79,11 @@ const Skills = () => {
     const interval = setInterval(() => {
       setActiveCategory(prev => (prev + 1) % skillCategories.length);
     }, 5000);
-
     return () => clearInterval(interval);
   }, []);
 
-  // Your original CategoryTab component - UNCHANGED
-  const CategoryTab = ({ category, isActive, onClick }) => {
+  // Clean Category Tab - Your original design unchanged
+  const CategoryTab = ({ category,  isActive, onClick }) => {
     const tabClass = isActive 
       ? 'border-gray-600 bg-gray-800/60 scale-105' 
       : 'border-gray-700/50 bg-gray-900/40 hover:border-gray-600/50 hover:bg-gray-800/40';
@@ -133,99 +131,51 @@ const Skills = () => {
     );
   };
 
-  // FIXED Hemisphere Skill component - NO OVERLAPPING, NO CUTOFF
-  const HemisphereSkill = ({ skill, index, total, categoryIndex }) => {
+  // NEW: Clean Skill Card - Text Only Design
+  const CleanSkillCard = ({ skill, index, categoryIndex }) => {
     const skillKey = `${categoryIndex}-${index}`;
     const level = animatedLevels[skillKey] || 0;
     
-    // REDUCED radius to prevent overlapping
-    const angle = (Math.PI * index) / (total - 1);
-    const radius = 180; // Reduced from 220 to 180
-    const x = Math.cos(angle) * radius;
-    const y = Math.sin(angle) * radius;
-
     return (
       <div
-        className={`absolute transition-all duration-700 group ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`}
-        style={{
-          left: `calc(50% + ${x}px)`,
-          top: `calc(50% - ${y}px)`,
-          transform: 'translate(-50%, -50%)',
-          animationDelay: `${index * 100}ms`
+        className={`group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 transition-all duration-500 hover:bg-white/10 hover:border-white/20 hover:scale-105 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+        style={{ 
+          animationDelay: `${index * 80}ms`,
+          borderColor: `${skill.color}30`
         }}
       >
-        {/* INCREASED spacing between icon and name */}
-        <div className="flex flex-col items-center space-y-4">
-          {/* Progress Ring and Icon */}
-          <div className="relative">
-            <svg className="w-16 h-16 transform -rotate-90" viewBox="0 0 64 64">
-              <circle
-                cx="32"
-                cy="32"
-                r="26"
-                fill="none"
-                stroke="rgba(255,255,255,0.15)"
-                strokeWidth="3"
-              />
-              <circle
-                cx="32"
-                cy="32"
-                r="26"
-                fill="none"
-                stroke={skill.color}
-                strokeWidth="3"
-                strokeLinecap="round"
-                strokeDasharray={`${2 * Math.PI * 26}`}
-                strokeDashoffset={`${2 * Math.PI * 26 * (1 - level / 100)}`}
-                className="transition-all duration-2000 ease-out"
-                style={{ filter: `drop-shadow(0 0 8px ${skill.color}60)` }}
-              />
-            </svg>
+        {/* Skill Name */}
+        <div className="flex items-center justify-between mb-4">
+          <h4 
+            className="text-white font-bold text-lg"
+            style={{ color: skill.color }}
+          >
+            {skill.name}
+          </h4>
+          <span className="text-gray-300 text-sm font-medium">{level}%</span>
+        </div>
 
-            {/* Icon Container */}
+        {/* Progress Bar */}
+        <div className="relative">
+          <div className="h-2 bg-gray-800/60 rounded-full overflow-hidden">
             <div 
-              className="absolute inset-0 flex items-center justify-center rounded-full transition-all duration-300 group-hover:scale-110"
+              className="h-full rounded-full transition-all duration-1500 ease-out"
               style={{
-                background: `radial-gradient(circle, ${skill.color}25, ${skill.color}15, rgba(0,0,0,0.3) 70%)`
+                width: `${level}%`,
+                background: `linear-gradient(90deg, ${skill.color}, ${skill.color}dd)`,
+                boxShadow: `0 0 10px ${skill.color}40`
               }}
-            >
-              <skill.Icon 
-                className="w-6 h-6" 
-                style={{ 
-                  color: skill.color,
-                  filter: `drop-shadow(0 0 4px ${skill.color}80)`
-                }}
-              />
-            </div>
-
-            {/* Level Badge */}
-            <div 
-              className="absolute -top-1 -right-1 w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-lg border border-gray-800"
-              style={{ 
-                backgroundColor: skill.color,
-                boxShadow: `0 0 8px ${skill.color}60`
-              }}
-            >
-              {level}%
-            </div>
-          </div>
-
-          {/* Skill Name with proper spacing */}
-          <div className="text-center w-20">
-            <div 
-              className="text-xs font-bold px-2 py-1 rounded-md border whitespace-nowrap overflow-hidden text-ellipsis"
-              style={{ 
-                color: 'white',
-                backgroundColor: `${skill.color}25`,
-                borderColor: `${skill.color}60`,
-                textShadow: `0 0 6px rgba(0,0,0,0.9), 0 1px 2px ${skill.color}60`,
-                backdropFilter: 'blur(2px)'
-              }}
-            >
-              {skill.name}
-            </div>
+            />
           </div>
         </div>
+
+        {/* Subtle glow on hover */}
+        <div 
+          className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+          style={{
+            background: `radial-gradient(circle at center, ${skill.color}05, transparent 70%)`
+          }}
+        />
       </div>
     );
   };
@@ -238,31 +188,33 @@ const Skills = () => {
       id="skills" 
       className="py-20 bg-gradient-to-br from-slate-950 via-gray-900 to-black relative overflow-hidden"
     >
-      {/* Background Effects */}
+      {/* Subtle Background Effects */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 right-20 w-80 h-80 bg-blue-500/8 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-20 left-20 w-72 h-72 bg-pink-500/8 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-20 right-20 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 left-20 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center space-x-3 mb-6">
-            <Sparkles className="w-8 h-8 text-yellow-400 animate-spin" style={{ animationDuration: '3s' }} />
+          <div className="flex items-center justify-center space-x-3 mb-6">
+            <Sparkles className="w-6 h-6 text-yellow-400" />
             <h2 className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-white via-gray-200 to-cyan-200 bg-clip-text text-transparent">
               Skills & Technologies
             </h2>
-            <Sparkles className="w-8 h-8 text-purple-400 animate-spin" style={{ animationDuration: '3s', animationDirection: 'reverse' }} />
+            <Star className="w-6 h-6 text-purple-400" />
           </div>
-          <div className="w-32 h-1 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full mx-auto animate-pulse" />
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            Explore my technical expertise across various development domains
+          </p>
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           
-          {/* Left Side - Your Original Category Tabs - UNCHANGED */}
-          <div className="space-y-4">
+          {/* Left Side - Category Tabs (unchanged) */}
+          <div className="lg:col-span-1 space-y-4">
             <h3 className="text-2xl font-bold text-white mb-6 flex items-center space-x-2">
               <Star className="w-6 h-6 text-yellow-400" />
               <span>Expertise Areas</span>
@@ -278,7 +230,7 @@ const Skills = () => {
               />
             ))}
 
-            {/* Overall Progress Section - UNCHANGED */}
+            {/* Overall Progress */}
             <div className="mt-8 p-6 bg-gray-900/40 backdrop-blur-xl border border-gray-700/50 rounded-xl">
               <h4 className="text-white font-semibold mb-4">Overall Progress</h4>
               <div className="space-y-3">
@@ -287,11 +239,6 @@ const Skills = () => {
                     category.skills.reduce((sum, skill) => sum + skill.level, 0) / category.skills.length
                   );
                   
-                  const progressBarStyle = {
-                    width: `${avgLevel}%`,
-                    backgroundColor: category.color
-                  };
-
                   return (
                     <div key={index} className="flex items-center justify-between">
                       <span className="text-gray-300 text-sm">{category.title}</span>
@@ -299,7 +246,10 @@ const Skills = () => {
                         <div className="w-16 h-1.5 bg-gray-800 rounded-full overflow-hidden">
                           <div 
                             className="h-full rounded-full transition-all duration-1000"
-                            style={progressBarStyle}
+                            style={{
+                              width: `${avgLevel}%`,
+                              backgroundColor: category.color
+                            }}
                           />
                         </div>
                         <span className="text-white text-xs font-medium w-10">{avgLevel}%</span>
@@ -311,8 +261,8 @@ const Skills = () => {
             </div>
           </div>
 
-          {/* Right Side - FIXED Hemisphere Skills Display */}
-          <div className="relative">
+          {/* Right Side - Clean Skills Grid */}
+          <div className="lg:col-span-2">
             <div className="flex items-center space-x-3 mb-8">
               <div 
                 className="p-3 rounded-lg"
@@ -322,40 +272,20 @@ const Skills = () => {
                 }}
               >
                 <currentCategory.icon 
-                  className="w-7 h-7" 
+                  className="w-6 h-6" 
                   style={{ color: currentCategory.color }}
                 />
               </div>
               <h3 className="text-2xl font-bold text-white">{currentCategory.title}</h3>
             </div>
 
-            {/* FIXED Hemisphere Container - Added padding and proper height */}
-            <div className="relative h-[450px] w-full pt-12 pb-8 px-8 overflow-visible">
-              {/* Center Hub */}
-              <div 
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 translate-y-1/2 p-5 rounded-full border-2 transition-all duration-500"
-                style={{
-                  backgroundColor: `${currentCategory.color}20`,
-                  borderColor: `${currentCategory.color}60`,
-                  boxShadow: `0 0 30px ${currentCategory.color}30, inset 0 0 15px ${currentCategory.color}10`
-                }}
-              >
-                <currentCategory.icon 
-                  className="w-8 h-8" 
-                  style={{ 
-                    color: currentCategory.color,
-                    filter: `drop-shadow(0 0 4px ${currentCategory.color}80)`
-                  }}
-                />
-              </div>
-
-              {/* Skills in PROPERLY SPACED Hemisphere */}
+            {/* Clean Skills Grid - No Congestion */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
               {currentCategory.skills.map((skill, index) => (
-                <HemisphereSkill
+                <CleanSkillCard
                   key={`${activeCategory}-${index}`}
                   skill={skill}
                   index={index}
-                  total={currentCategory.skills.length}
                   categoryIndex={activeCategory}
                 />
               ))}
@@ -364,26 +294,11 @@ const Skills = () => {
 
         </div>
 
-        {/* Footer - UNCHANGED */}
+        {/* Footer */}
         <div className="text-center mt-16">
-          <div className="inline-flex items-center space-x-4 bg-gray-900/60 backdrop-blur-xl rounded-2xl px-8 py-6 border border-gray-700/50 hover:border-purple-400/50 transition-all duration-500 group">
-            <Zap className="w-6 h-6 text-yellow-400 group-hover:animate-bounce" />
-            <span className="text-gray-300 font-medium">Always learning new technologies</span>
-            <div className="flex space-x-2">
-              {['#10b981', '#3b82f6', '#ec4899', '#f59e0b', '#8b5cf6'].map((color, i) => {
-                const dotStyle = {
-                  backgroundColor: color,
-                  animationDelay: `${i * 150}ms`
-                };
-                return (
-                  <div 
-                    key={i}
-                    className="w-2 h-2 rounded-full animate-pulse"
-                    style={dotStyle}
-                  />
-                );
-              })}
-            </div>
+          <div className="inline-flex items-center space-x-4 bg-white/5 backdrop-blur-sm rounded-xl px-8 py-4 border border-white/10">
+            <Zap className="w-5 h-5 text-yellow-400" />
+            <span className="text-gray-300 font-medium">Always Learning New Technologies</span>
           </div>
         </div>
       </div>
