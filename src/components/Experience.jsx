@@ -52,26 +52,26 @@ const Experience = () => {
       skills: ["Tableau", "Microsoft Excel", "Data Analysis", "Risk Assessment", "Client Reporting"],
       impact: "Risk mitigation insights"
     },
-    {
-      id: 3,
-      title: "Data Visualization Virtual Intern",
-      company: "Tata Group",
-      type: "Virtual Experience", 
-      duration: "Jan 2025 - Feb 2025 • 2 mos",
-      location: "Online",
-      status: "Completed",
-      logo: "📈",
-      color: "#8b5cf6",
-      gradient: "from-purple-400 to-violet-600",
-      achievements: [
-        "Participated in business intelligence simulation involving real-world data storytelling",
-        "Gained hands-on experience in choosing right visuals and framing business scenarios",
-        "Created and interpreted visualizations to support data-driven decision-making",
-        "Aligned deliverables with Tata's standards for corporate insights"
-      ],
-      skills: ["Data Analysis", "Business Intelligence", "Data Visualization", "Storytelling"],
-      impact: "Enhanced BI capabilities"
-    }
+    // {
+    //   id: 3,
+    //   title: "Data Visualization Virtual Intern",
+    //   company: "Tata Group",
+    //   type: "Virtual Experience", 
+    //   duration: "Jan 2025 - Feb 2025 • 2 mos",
+    //   location: "Online",
+    //   status: "Completed",
+    //   logo: "📈",
+    //   color: "#8b5cf6",
+    //   gradient: "from-purple-400 to-violet-600",
+    //   achievements: [
+    //     "Participated in business intelligence simulation involving real-world data storytelling",
+    //     "Gained hands-on experience in choosing right visuals and framing business scenarios",
+    //     "Created and interpreted visualizations to support data-driven decision-making",
+    //     "Aligned deliverables with Tata's standards for corporate insights"
+    //   ],
+    //   skills: ["Data Analysis", "Business Intelligence", "Data Visualization", "Storytelling"],
+    //   impact: "Enhanced BI capabilities"
+    // }
   ];
 
   // Mouse tracking for interactive effects
