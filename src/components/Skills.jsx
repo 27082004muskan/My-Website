@@ -246,10 +246,10 @@ const Skills = () => {
           <div className="xl:col-span-4 space-y-6">
             <div className="text-center xl:text-left">
               <h3 className="text-2xl font-bold text-white mb-2 flex items-center justify-center xl:justify-start space-x-2">
-                <Star className="w-5 h-5 text-yellow-400" />
-                <span>Expertise Areas</span>
+                {/* <Star className="w-5 h-5 text-yellow-400" /> */}
+                {/* <span>Expertise Areas</span> */}
               </h3>
-              <p className="text-gray-400 text-sm">Core competencies & proficiency levels</p>
+              {/* <p className="text-gray-400 text-sm">Core competencies & proficiency levels</p> */}
             </div>
             
             <div className="space-y-6">

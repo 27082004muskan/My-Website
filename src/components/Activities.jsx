@@ -386,9 +386,9 @@ const Activities = () => {
           <span className="text-2xl font-black">{year}</span>
           <Star className="w-5 h-5" />
         </div>
-        <p className="text-gray-600 font-medium">
+        {/* <p className="text-gray-600 font-medium">
           {activities.length} Professional Activities & Achievements
-        </p>
+        </p> */}
       </div>
 
       <div className="relative">

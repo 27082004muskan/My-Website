@@ -404,12 +404,12 @@ const Certifications = () => {
       <div className="relative z-10 py-16 bg-gradient-to-br from-black via-gray-950 to-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-xl border border-purple-500/30 rounded-xl px-5 py-2 mb-4 group hover:from-purple-500/25 hover:to-pink-500/25 transition-all duration-400">
-              <Code className="w-5 h-5 text-purple-400 group-hover:animate-pulse" />
-              <span className="text-sm font-semibold bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent">
+            <div>
+              {/* <Code className="w-5 h-5 text-purple-400 group-hover:animate-pulse" /> */}
+              {/* <span className="text-sm font-semibold bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent">
                 MERN Stack & Development
-              </span>
-              <Zap className="w-4 h-4 text-pink-400 group-hover:animate-bounce" />
+              </span> */}
+              {/* <Zap className="w-4 h-4 text-pink-400 group-hover:animate-bounce" /> */}
             </div>
             
             <h2 className="text-3xl lg:text-4xl font-black mb-4 bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent leading-tight">
@@ -419,9 +419,9 @@ const Certifications = () => {
               </span>
             </h2>
             
-            <p className="text-base text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            {/* <p className="text-base text-gray-300 max-w-3xl mx-auto leading-relaxed">
               Full-stack development mastery with cutting-edge web technologies and frameworks
-            </p>
+            </p> */}
           </div>
 
           <div className="relative">
@@ -458,12 +458,12 @@ const Certifications = () => {
       <div className="relative z-10 py-16 bg-gradient-to-br from-black via-gray-950 to-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 backdrop-blur-xl border border-blue-500/30 rounded-xl px-5 py-2 mb-4 group hover:from-blue-500/25 hover:to-cyan-500/25 transition-all duration-400">
-              <BarChart3 className="w-5 h-5 text-blue-400 group-hover:animate-pulse" />
-              <span className="text-sm font-semibold bg-gradient-to-r from-blue-300 to-cyan-300 bg-clip-text text-transparent">
+            <div>
+              {/* <BarChart3 className="w-5 h-5 text-blue-400 group-hover:animate-pulse" /> */}
+              {/* <span className="text-sm font-semibold bg-gradient-to-r from-blue-300 to-cyan-300 bg-clip-text text-transparent">
                 Data Analytics & Visualization
-              </span>
-              <Star className="w-4 h-4 text-cyan-400 group-hover:animate-spin" />
+              </span> */}
+              {/* <Star className="w-4 h-4 text-cyan-400 group-hover:animate-spin" /> */}
             </div>
             
             <h2 className="text-3xl lg:text-4xl font-black mb-4 bg-gradient-to-r from-white via-blue-200 to-cyan-200 bg-clip-text text-transparent leading-tight">
@@ -473,9 +473,9 @@ const Certifications = () => {
               </span>
             </h2>
             
-            <p className="text-base text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            {/* <p className="text-base text-gray-300 max-w-3xl mx-auto leading-relaxed">
               Business intelligence expertise with advanced data visualization and analytics mastery
-            </p>
+            </p> */}
           </div>
 
           <div className="relative">
