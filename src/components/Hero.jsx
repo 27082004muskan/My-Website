@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Linkedin, Github, Code, Download } from 'lucide-react'
+import Resume from "../assets/Resume.pdf";
 
 // Enhanced TypewriterEffect with continuous loop
 const TypewriterEffect = ({ texts, speed = 150, deleteSpeed = 100, pauseTime = 2000 }) => {
@@ -81,10 +82,15 @@ const Hero = () => {
             
             {/* Animated Buttons with Jump Effects */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <button className="group bg-gradient-to-r from-pink-500/80 to-purple-600/80 hover:from-pink-500 hover:to-purple-600 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 animate-bounce-slow flex items-center justify-center space-x-2 shadow-lg hover:shadow-pink-500/25">
-                <Download className="w-5 h-5 group-hover:animate-bounce" />
-                <span>Download Resume</span>
-              </button>
+           <a 
+  href={Resume} 
+  download="Muskan.pdf"
+  className="group bg-gradient-to-r from-pink-500/80 to-purple-600/80 hover:from-pink-500 hover:to-purple-600 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 animate-bounce-slow flex items-center justify-center space-x-2 shadow-lg hover:shadow-pink-500/25 no-underline"
+>
+  <Download className="w-5 h-5 group-hover:animate-bounce" />
+  <span>Download Resume</span>
+</a>
+
               <a href="https://www.linkedin.com/in/muskan-gupta-639065250/" target="_blank" rel="noopener noreferrer"
                  className="group bg-gray-800/80 hover:bg-gray-700 border border-gray-600 hover:border-pink-400/50 text-gray-200 hover:text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 animate-bounce-slow animation-delay-200 flex items-center justify-center space-x-2 hover:shadow-lg hover:shadow-blue-500/25">
                 <Linkedin className="w-5 h-5 group-hover:text-pink-300" />
