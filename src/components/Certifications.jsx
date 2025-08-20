@@ -12,6 +12,7 @@ import Tableau from "../assets/certificates/tableau.pdf";
 import PowerBi from "../assets/certificates/powerBi.pdf";
 import React_Mern from "../assets/certificates/react.pdf";
 import NodeJs from "../assets/certificates/Node.pdf";
+import Npm from "../assets/certificates/npm.pdf";
 
 const Certifications = () => {
   const mernScrollRef = useRef(null);
@@ -54,7 +55,26 @@ const Certifications = () => {
       downloadUrl: NodeJs,
       fileName: "Nodejs_Essential_Training_Certificate"
     },
-
+{
+  title: "Learning npm: A Package Manager",
+  issuer: "LinkedIn Learning",
+  date: "2025", 
+  icon: "Package",
+  category: "Package Management",
+  color: "from-green-400 to-emerald-500",
+  downloadUrl: Npm, // Replace with your actual import
+  fileName: "NPM_Package_Manager_Certificate"
+},
+{
+  title: "Express Essential: Build Powerful Web Apps with Node.js",
+  issuer: "LinkedIn Learning",
+  date: "2025",
+  icon: "Server", 
+  category: "Backend Development",
+  color: "from-yellow-400 to-orange-500",
+  downloadUrl: Npm, // Replace with your actual import  
+  fileName: "Express_NodeJS_Certificate"
+},
     {
       title: "Full Stack Development",
       issuer: "LinkedIn Learning",

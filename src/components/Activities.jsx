@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useMemo } from "react";
-import { Calendar, Briefcase, ChevronRight, ChevronLeft, Star, Target, Award, Trophy, Users, Code, BarChart, Globe, Zap, Building } from "lucide-react";
+import { Calendar, Briefcase, ChevronRight, ChevronLeft, Star, Target, Award, Trophy, Users, Code, BarChart, Globe, Zap, Building, CloudRain } from "lucide-react";
 
 /**
  * Activities.jsx
@@ -236,6 +236,39 @@ const Activities = () => {
           category: "Competition",
           color: "from-orange-500 to-red-500",
         },
+        {
+  title: "Wipro TalentNext - Java Full Stack Program",
+  description: "Comprehensive Java full stack development training program",
+  date: "August 2025",
+  icon: Code,
+  category: "Training Program", 
+  color: "from-blue-500 to-indigo-600",
+},
+{
+  title: "GFG 160 Days of Code Challenge",
+  description: "GeeksforGeeks intensive coding practice and problem solving",
+  date: "July 2025",
+  icon: Target,
+  category: "Coding Challenge",
+  color: "from-green-500 to-emerald-600",
+},
+{
+  title: "AWS Academy Cloud Foundation",
+  description: "AWS Skill Builder fundamental cloud computing course",
+  date: "August 2025", 
+  icon: CloudRain,
+  category: "Cloud Computing",
+  color: "from-purple-500 to-violet-600",
+},
+{
+  title: "NPTEL Online Courses",
+  description: "National Programme on Technology Enhanced Learning",
+  date: "August 2025",
+  icon: Target,
+  category: "Academic Course",
+  color: "from-pink-500 to-rose-600",
+}
+
       ],
     }),
     []
