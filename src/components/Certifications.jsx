@@ -10,6 +10,8 @@ import SQL from "../assets/certificates/sql.pdf";
 import Excel from "../assets/certificates/Excel.pdf";
 import Tableau from "../assets/certificates/tableau.pdf";
 import PowerBi from "../assets/certificates/powerBi.pdf";
+import React_Mern from "../assets/certificates/react.pdf";
+import NodeJs from "../assets/certificates/Node.pdf";
 
 const Certifications = () => {
   const mernScrollRef = useRef(null);
@@ -32,6 +34,27 @@ const Certifications = () => {
       downloadUrl: MicroSoft,
       fileName: "Microsoft_Azure_Certificate"
     },
+        {
+      title: " React Essential Training",
+      issuer: "LinkedIn Learning",
+      date: "2025",
+      icon: "Terminal",
+      category: "React-MERN Stack",
+      color: "from-red-400 to-pink-500",
+      downloadUrl: React_Mern,
+      fileName: "React_Essential_Training_Certificate"
+    },
+      {
+      title: " Node.js Essential Training",
+      issuer: "LinkedIn Learning",
+      date: "2025",
+      icon: "Database",
+      category: "Node.js-MERN Stack",
+      color: "from-cyan-400 to-blue-500",
+      downloadUrl: NodeJs,
+      fileName: "Nodejs_Essential_Training_Certificate"
+    },
+
     {
       title: "Full Stack Development",
       issuer: "LinkedIn Learning",
