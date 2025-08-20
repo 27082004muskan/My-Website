@@ -13,6 +13,7 @@ import PowerBi from "../assets/certificates/powerBi.pdf";
 import React_Mern from "../assets/certificates/react.pdf";
 import NodeJs from "../assets/certificates/Node.pdf";
 import Npm from "../assets/certificates/npm.pdf";
+import Express from "../assets/certificates/express.pdf";
 
 const Certifications = () => {
   const mernScrollRef = useRef(null);
@@ -72,7 +73,7 @@ const Certifications = () => {
   icon: "Server", 
   category: "Backend Development",
   color: "from-yellow-400 to-orange-500",
-  downloadUrl: Npm, // Replace with your actual import  
+  downloadUrl: Express, // Replace with your actual import  
   fileName: "Express_NodeJS_Certificate"
 },
     {
