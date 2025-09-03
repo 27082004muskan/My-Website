@@ -1,6 +1,6 @@
 import React from 'react'
 import { Palette } from 'lucide-react';
-import Muskan from '../assets/MUSKAN.jpeg';
+import Muskan from '../assets/Muskan.png';
 
 
 
