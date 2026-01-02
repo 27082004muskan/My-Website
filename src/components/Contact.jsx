@@ -109,11 +109,11 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-pink-500 via-purple-500 to-purple-700 relative overflow-hidden">
+    <section id="contact" className="py-20 bg-gradient-to-br from-gray-700/90 via-stone-600/85 to-orange-700/70 relative overflow-hidden">
       {/* Success Animation Overlay */}
       {showSuccess && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-          <div className="bg-white rounded-2xl p-8 max-w-md mx-4 transform animate-success-popup shadow-2xl relative">
+          <div className="bg-gray rounded-2xl p-8 max-w-md mx-4 transform animate-success-popup shadow-2xl relative">
             <button
               onClick={closeSuccessMessage}
               className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors duration-200"
@@ -131,7 +131,7 @@ const Contact = () => {
                 Thank you for reaching out! I'll get back to you within 24 hours.
               </p>
               <div className="flex justify-center space-x-2 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-                <div className="w-2 h-2 bg-pink-400 rounded-full animate-bounce-dots"></div>
+                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce-dots"></div>
                 <div className="w-2 h-2 bg-purple-400 rounded-full animate-bounce-dots" style={{ animationDelay: '0.2s' }}></div>
                 <div className="w-2 h-2 bg-indigo-400 rounded-full animate-bounce-dots" style={{ animationDelay: '0.4s' }}></div>
               </div>
@@ -154,7 +154,7 @@ const Contact = () => {
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* General Error Display */}
               {error && (
-                <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+                <div className="bg-red-100 border border-gray-400 text-gray-700 px-4 py-3 rounded mb-4">
                   {error}
                 </div>
               )}
@@ -166,7 +166,7 @@ const Contact = () => {
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 bg-white/20 border ${fieldErrors.name ? 'border-red-400' : 'border-white/30'} rounded-lg text-white placeholder-pink-200 focus:outline-none focus:border-pink-300`}
+                  className={`w-full px-4 py-3 bg-white/20 border ${fieldErrors.name ? 'border-red-400' : 'border-white/30'} rounded-lg text-white placeholder-gray-200 focus:outline-none focus:border-pink-300`}
                   placeholder="Your Name"
                   required
                   disabled={isSubmitting}
@@ -183,7 +183,7 @@ const Contact = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className={`w-full px-4 py-3 bg-white/20 border ${fieldErrors.email ? 'border-red-400' : 'border-white/30'} rounded-lg text-white placeholder-pink-200 focus:outline-none focus:border-pink-300`}
+                  className={`w-full px-4 py-3 bg-white/20 border ${fieldErrors.email ? 'border-red-400' : 'border-white/30'} rounded-lg text-white placeholder-gray-200 focus:outline-none focus:border-pink-300`}
                   placeholder="your.email@example.com"
                   required
                   disabled={isSubmitting}
@@ -200,7 +200,7 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleInputChange}
                   rows="6"
-                  className={`w-full px-4 py-3 bg-white/20 border ${fieldErrors.message ? 'border-red-400' : 'border-white/30'} rounded-lg text-white placeholder-pink-200 focus:outline-none focus:border-pink-300 resize-none`}
+                  className={`w-full px-4 py-3 bg-white/20 border ${fieldErrors.message ? 'border-red-400' : 'border-white/30'} rounded-lg text-white placeholder-gray-200 focus:outline-none focus:border-gray-300 resize-none`}
                   placeholder="Tell me about your project or just say hello!"
                   required
                   disabled={isSubmitting}
@@ -213,11 +213,11 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-white text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-pink-100 transition-all duration-300 flex items-center justify-center space-x-2"
+                className="w-full bg-gray-200 text-orange-500 px-6 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-all duration-300 flex items-center justify-center space-x-2"
               >
                 {isSubmitting ? (
                   <>
-                    <div className="w-5 h-5 border-2 border-purple-600 border-t-transparent rounded-full animate-spin"></div>
+                    <div className="w-5 h-5 border-2 border-orange-600 border-t-transparent rounded-full animate-spin"></div>
                     <span>Sending...</span>
                   </>
                 ) : (
@@ -237,30 +237,30 @@ const Contact = () => {
               <h3 className="text-2xl font-bold text-white mb-6">Get In Touch</h3>
               <div className="space-y-4">
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 bg-orange-400 rounded-full flex items-center justify-center">
                     <Mail className="w-6 h-6 text-white" />
                   </div>
                   <div>
                     <p className="text-white font-medium">Email</p>
-                    <p className="text-pink-200">gmuskan.2708@gmail.com</p>
+                    <p className="text-gray-200">gmuskan.2708@gmail.com</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 bg-orange-400 rounded-full flex items-center justify-center">
                     <Phone className="w-6 h-6 text-white" />
                   </div>
                   <div>
                     <p className="text-white font-medium">Phone</p>
-                    <p className="text-pink-200">+91 XXXXX XXXXX</p>
+                    <p className="text-gray-200">+91 XXXXX XXXXX</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-indigo-500 rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 bg-orange-400 rounded-full flex items-center justify-center">
                     <MapPin className="w-6 h-6 text-white" />
                   </div>
                   <div>
                     <p className="text-white font-medium">Location</p>
-                    <p className="text-pink-200">India</p>
+                    <p className="text-gray-200">India</p>
                   </div>
                 </div>
               </div>
@@ -275,28 +275,28 @@ const Contact = () => {
                   <Github className="w-6 h-6 text-white" />
                 </a>
                 <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer"
-                  className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-500">
+                  className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center hover:bg-blue-500">
                   <Linkedin className="w-6 h-6 text-white" />
                 </a>
-                <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer"
-                  className="w-12 h-12 bg-sky-500 rounded-full flex items-center justify-center hover:bg-sky-400">
+                {/* <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer"
+                  className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center hover:bg-sky-400">
                   <Twitter className="w-6 h-6 text-white" />
-                </a>
+                </a> */}
               </div>
             </div>
 
             {/* Additional Info Section */}
             <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
               <h3 className="text-xl font-bold text-white mb-4">Let's Work Together</h3>
-              <p className="text-pink-200 text-sm">
+              <p className="text-gray-200 text-sm">
                 I'm always interested in new opportunities and exciting projects.
                 Whether you have a specific project in mind or just want to connect, feel free to reach out!
               </p>
               <div className="mt-4 flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-pink-500/30 text-pink-100 text-xs rounded-full">
+                <span className="px-3 py-1 bg-orange-500/30 text-pink-100 text-xs rounded-full">
                   Available for Freelance
                 </span>
-                <span className="px-3 py-1 bg-purple-500/30 text-purple-100 text-xs rounded-full">
+                <span className="px-3 py-1 bg-orange-500/30 text-purple-100 text-xs rounded-full">
                   Open to Opportunities
                 </span>
               </div>

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Github, Linkedin, Mail, Download, ExternalLink, Code, Database, Palette, Award, Calendar, MapPin, Send, Menu, X, Phone } from 'lucide-react';
 
@@ -33,8 +32,8 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo and Name */}
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-r from-pink-400/80 to-purple-500/80 flex items-center justify-center shadow-lg">
-              <Code className="w-6 h-6 text-white" />
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gray-50 via-slate-50 to-gray-100 flex items-center justify-center shadow-lg">
+              <Code className="w-6 h-6 text-gray-500" />
             </div>
             <span className="font-bold text-xl text-white">Creovate</span>
           </div>
@@ -45,10 +44,10 @@ const Navbar = () => {
               <button
                 key={item}
                 onClick={() => scrollToSection(item)}
-                className="text-gray-300 hover:text-pink-300 transition-colors duration-200 font-medium relative group"
+                className="text-gray-300 hover:text-orange-300 transition-colors duration-200 font-medium relative group hover:bg-gray-700 hover:from-gray-700/90 hover:via-stone-600/85 hover:to-orange-700/70 hover:bg-gradient-to-r"
               >
                 {item}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-pink-400 to-purple-500 group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-400 via-stone-500 to-orange-600 group-hover:w-full transition-all duration-300"></span>
               </button>
             ))}
           </div>
@@ -56,15 +55,15 @@ const Navbar = () => {
           {/* Social Icons */}
           <div className="hidden md:flex items-center space-x-4">
             <a href="https://www.linkedin.com/in/muskan-gupta-639065250/" target="_blank" rel="noopener noreferrer" 
-               className="text-gray-300 hover:text-pink-300 transition-colors duration-200 p-2 hover:bg-gray-800/50 rounded-full">
+               className="text-gray-300 hover:text-pink-300 transition-colors duration-200 p-2 hover:bg-gray-800/50 rounded-full hover:bg-gray-700 hover:from-gray-700/90 hover:via-stone-600/85 hover:to-orange-700/70">
               <Linkedin className="w-5 h-5" />
             </a>
             <a href="https://github.com/27082004muskan" target="_blank" rel="noopener noreferrer"
-               className="text-gray-300 hover:text-purple-300 transition-colors duration-200 p-2 hover:bg-gray-800/50 rounded-full">
+               className="text-gray-300 hover:text-pink-300 transition-colors duration-200 p-2 hover:bg-gray-800/50 rounded-full hover:bg-gray-700 hover:from-gray-700/90 hover:via-stone-600/85 hover:to-orange-700/70">
               <Github className="w-5 h-5" />
             </a>
             <a href="mailto:gmuskan.2708@gmail.com"
-               className="text-gray-300 hover:text-pink-300 transition-colors duration-200 p-2 hover:bg-gray-800/50 rounded-full">
+               className="text-gray-300 hover:text-pink-300 transition-colors duration-200 p-2 hover:bg-gray-800/50 rounded-full hover:bg-gray-700 hover:from-gray-700/90 hover:via-stone-600/85 hover:to-orange-700/70">
               <Mail className="w-5 h-5" />
             </a>
           </div>
@@ -72,7 +71,7 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-gray-300 hover:text-white p-2 hover:bg-gray-800/50 rounded-lg transition-colors duration-200"
+            className="md:hidden text-gray-300 hover:text-white p-2 hover:bg-gray-800/50 rounded-lg transition-colors duration-200 hover:bg-gray-700 hover:from-gray-700/90 hover:via-stone-600/85 hover:to-orange-700/70"
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -86,7 +85,7 @@ const Navbar = () => {
                 <button
                   key={item}
                   onClick={() => scrollToSection(item)}
-                  className="block w-full text-left px-3 py-2 text-gray-300 hover:text-pink-300 hover:bg-gray-800/30 rounded-lg transition-all duration-200"
+                  className="block w-full text-left px-3 py-2 text-gray-300 hover:text-pink-300 hover:bg-gray-800/30 rounded-lg transition-all duration-200 hover:bg-gray-700 hover:from-gray-700/90 hover:via-stone-600/85 hover:to-orange-700/70"
                 >
                   {item}
                 </button>
@@ -99,4 +98,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar ;
+export default Navbar;

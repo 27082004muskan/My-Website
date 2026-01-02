@@ -1,16 +1,11 @@
 import React, { useState, useRef, useEffect, useMemo } from "react";
 import { Calendar, Briefcase, ChevronRight, ChevronLeft, Star, Target, Award, Trophy, Users, Code, BarChart, Globe, Zap, Building, CloudRain } from "lucide-react";
 
-/**
- * Activities.jsx
- * Manual scrolling with scroll buttons - Professional version without emojis
- */
-
 const Activities = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
   const containerRef = useRef(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [ setScrollY] = useState(0);
+  const [setScrollY] = useState(0);
 
   // Individual refs for each year's scroll container
   const scrollRef2022 = useRef(null);
@@ -42,6 +37,14 @@ const Activities = () => {
     }),
     []
   );
+
+  // Define year colors separately
+  const yearColors = useMemo(() => ({
+    "2022": "from-blue-500 to-cyan-500",
+    "2023": "from-purple-500 to-violet-500", 
+    "2024": "from-pink-500 to-rose-500",
+    "2025": "from-emerald-500 to-green-500"
+  }), []);
 
   const activitiesByYear = useMemo(
     () => ({
@@ -178,14 +181,6 @@ const Activities = () => {
           category: "Hackathon",
           color: "from-cyan-500 to-blue-500",
         },
-        // {
-        //   title: "Markuti Case Study Competition",
-        //   description: "Semi-finalist in competition by MDI Gurgaon's Markuti Club",
-        //   date: "November",
-        //   icon: BarChart,
-        //   category: "Competition",
-        //   color: "from-amber-500 to-yellow-500",
-        // },
       ],
       2025: [
         {
@@ -220,7 +215,7 @@ const Activities = () => {
           category: "Achievement",
           color: "from-emerald-500 to-green-500",
         },
-         {
+        {
           title: "XR Creator Hackathon Delhi",
           description: "XR Creator Hackathon Meetup by Chhavi Garg",
           date: "October",
@@ -237,38 +232,37 @@ const Activities = () => {
           color: "from-orange-500 to-red-500",
         },
         {
-  title: "Wipro TalentNext - Java Full Stack Program",
-  description: "Comprehensive Java full stack development training program",
-  date: "August 2025",
-  icon: Code,
-  category: "Training Program", 
-  color: "from-blue-500 to-indigo-600",
-},
-{
-  title: "GFG 160 Days of Code Challenge",
-  description: "GeeksforGeeks intensive coding practice and problem solving",
-  date: "July 2025",
-  icon: Target,
-  category: "Coding Challenge",
-  color: "from-green-500 to-emerald-600",
-},
-{
-  title: "AWS Academy Cloud Foundation",
-  description: "AWS Skill Builder fundamental cloud computing course",
-  date: "August 2025", 
-  icon: CloudRain,
-  category: "Cloud Computing",
-  color: "from-purple-500 to-violet-600",
-},
-{
-  title: "NPTEL Online Courses",
-  description: "National Programme on Technology Enhanced Learning",
-  date: "August 2025",
-  icon: Target,
-  category: "Academic Course",
-  color: "from-pink-500 to-rose-600",
-}
-
+          title: "Wipro TalentNext - Java Full Stack Program",
+          description: "Comprehensive Java full stack development training program",
+          date: "August 2025",
+          icon: Code,
+          category: "Training Program", 
+          color: "from-blue-500 to-indigo-600",
+        },
+        {
+          title: "GFG 160 Days of Code Challenge",
+          description: "GeeksforGeeks intensive coding practice and problem solving",
+          date: "July 2025",
+          icon: Target,
+          category: "Coding Challenge",
+          color: "from-green-500 to-emerald-600",
+        },
+        {
+          title: "AWS Academy Cloud Foundation",
+          description: "AWS Skill Builder fundamental cloud computing course",
+          date: "August 2025", 
+          icon: CloudRain,
+          category: "Cloud Computing",
+          color: "from-purple-500 to-violet-600",
+        },
+        {
+          title: "NPTEL Online Courses",
+          description: "National Programme on Technology Enhanced Learning",
+          date: "August 2025",
+          icon: Target,
+          category: "Academic Course",
+          color: "from-pink-500 to-rose-600",
+        }
       ],
     }),
     []
@@ -300,13 +294,25 @@ const Activities = () => {
     }
   }, []);
 
-  // Scroll functions
-  const scrollHorizontal = (ref, direction) => {
+  // FIXED: Completely new scroll function that scrolls by exactly one card width
+  const scrollHorizontal = (ref, direction, year) => {
     const container = ref.current;
     if (!container) return;
     
-    const scrollAmount = 340; // card width + gap
-    const newScrollPosition = container.scrollLeft + (direction === 'right' ? scrollAmount : -scrollAmount);
+    // Scroll by exactly one card + gap (344px total)
+    const scrollAmount = 344; // 320px (card) + 24px (gap)
+    const currentScroll = container.scrollLeft;
+    const maxScroll = container.scrollWidth - container.clientWidth;
+    
+    let newScrollPosition;
+    
+    if (direction === 'right') {
+      newScrollPosition = Math.min(currentScroll + scrollAmount, maxScroll);
+    } else {
+      newScrollPosition = Math.max(currentScroll - scrollAmount, 0);
+    }
+    
+    console.log(`${year} - Direction: ${direction}, Current: ${currentScroll}, New: ${newScrollPosition}, Max: ${maxScroll}`);
     
     container.scrollTo({
       left: newScrollPosition,
@@ -314,21 +320,24 @@ const Activities = () => {
     });
   };
 
-  // Check scroll position
+  // FIXED: More accurate scroll position checking
   const checkScrollPosition = (ref, year) => {
     const container = ref.current;
     if (!container) return;
     
     const { scrollLeft, scrollWidth, clientWidth } = container;
+    const maxScroll = scrollWidth - clientWidth;
+    
+    console.log(`${year} - ScrollLeft: ${scrollLeft}, ScrollWidth: ${scrollWidth}, ClientWidth: ${clientWidth}, MaxScroll: ${maxScroll}`);
     
     setCanScrollLeft(prev => ({
       ...prev,
-      [year]: scrollLeft > 0
+      [year]: scrollLeft > 5
     }));
     
     setCanScrollRight(prev => ({
       ...prev,
-      [year]: scrollLeft < scrollWidth - clientWidth - 10
+      [year]: scrollLeft < maxScroll - 5
     }));
   };
 
@@ -342,8 +351,8 @@ const Activities = () => {
       if (container) {
         const handleScroll = () => checkScrollPosition(ref, year);
         container.addEventListener('scroll', handleScroll);
-        listeners.push(() => container.removeEventListener('scroll', handleScroll));
         handleScroll(); // Initial check
+        listeners.push(() => container.removeEventListener('scroll', handleScroll));
       }
     });
 
@@ -400,7 +409,7 @@ const Activities = () => {
     <button
       onClick={onClick}
       disabled={!canScroll}
-      className={`absolute ${direction === 'left' ? 'left-4' : 'right-4'} top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-gradient-to-r ${gradientColors} backdrop-blur-xl border border-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-lg`}
+      className={`absolute ${direction === 'left' ? 'left-4' : 'right-4'} top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-gradient-to-r ${gradientColors} backdrop-blur-xl border border-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-lg`}
     >
       {direction === 'left' ? 
         <ChevronLeft className="w-5 h-5 text-white" /> : 
@@ -419,16 +428,17 @@ const Activities = () => {
           <span className="text-2xl font-black">{year}</span>
           <Star className="w-5 h-5" />
         </div>
-        {/* <p className="text-gray-600 font-medium">
-          {activities.length} Professional Activities & Achievements
-        </p> */}
       </div>
 
       <div className="relative">
+        {/* FIXED: Removed snap scroll and changed to regular overflow */}
         <div
           ref={scrollRef}
           className="flex items-start gap-6 overflow-x-auto scrollbar-hide pb-4"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          style={{ 
+            scrollbarWidth: 'none', 
+            msOverflowStyle: 'none'
+          }}
         >
           {activities.map((activity, idx) => {
             const uniqueKey = `${year}-${idx}`;
@@ -438,14 +448,14 @@ const Activities = () => {
 
         <ScrollButton
           direction="left"
-          onClick={() => scrollHorizontal(scrollRef, 'left')}
+          onClick={() => scrollHorizontal(scrollRef, 'left', year)}
           canScroll={canScrollLeft[year]}
           gradientColors={`${yearColor} opacity-80`}
         />
 
         <ScrollButton
           direction="right"
-          onClick={() => scrollHorizontal(scrollRef, 'right')}
+          onClick={() => scrollHorizontal(scrollRef, 'right', year)}
           canScroll={canScrollRight[year]}
           gradientColors={`${yearColor} opacity-80`}
         />
@@ -501,13 +511,13 @@ const Activities = () => {
           </div>
         </div>
 
-        {/* Render each year section with manual scroll */}
+        {/* Render each year section */}
         {Object.entries(activitiesByYear).map(([year, activities]) => (
           <YearSection
             key={year}
             year={year}
             activities={activities}
-            yearColor={activities[0]?.color ?? "from-gray-500 to-gray-700"}
+            yearColor={yearColors[year]}
             scrollRef={refsByYear[year]}
           />
         ))}

@@ -34,10 +34,10 @@ const Footer = () => {
           <div className="text-center">
             <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
             <div className="space-y-2">
-              <a href="#about" className="block text-gray-400 hover:text-pink-400 transition-colors duration-200">About</a>
-              <a href="#skills" className="block text-gray-400 hover:text-pink-400 transition-colors duration-200">Skills</a>
-              <a href="#projects" className="block text-gray-400 hover:text-pink-400 transition-colors duration-200">Projects</a>
-              <a href="#contact" className="block text-gray-400 hover:text-pink-400 transition-colors duration-200">Contact</a>
+              <a href="#about" className="block text-gray-400 hover:text-orange-300 transition-colors duration-200">About</a>
+              <a href="#skills" className="block text-gray-400 hover:text-orange-300 transition-colors duration-200">Skills</a>
+              <a href="#projects" className="block text-gray-400 hover:text-orange-300 transition-colors duration-200">Projects</a>
+              <a href="#contact" className="block text-gray-400 hover:text-orange-300 transition-colors duration-200">Contact</a>
             </div>
           </div>
 
@@ -51,7 +51,7 @@ const Footer = () => {
                   href="https://www.linkedin.com/in/muskan-gupta-639065250/" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-pink-400 transition-colors duration-200"
+                  className="text-gray-400 hover:text-orange-300 transition-colors duration-200"
                 >
                   <Linkedin className="w-5 h-5" />
                 </a>
@@ -59,13 +59,13 @@ const Footer = () => {
                   href="https://github.com/27082004muskan" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-pink-400 transition-colors duration-200"
+                  className="text-gray-400 hover:text-orange-300 transition-colors duration-200"
                 >
                   <Github className="w-5 h-5" />
                 </a>
                 <a 
                   href="mailto:gmuskan.2708@gmail.com"
-                  className="text-gray-400 hover:text-pink-400 transition-colors duration-200"
+                  className="text-gray-400 hover:text-orange-300 transition-colors duration-200"
                 >
                   <Mail className="w-5 h-5" />
                 </a>
