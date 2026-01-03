@@ -1,45 +1,48 @@
 import { ExternalLink, Github } from "lucide-react";
 import Portal from '../assets/lms.gif';
-import Gemini from '../assets/gemini.gif';
 import ESG from "../assets/Esg.gif";
 import Road from "../assets/road.gif";
 import Hotel from "../assets/Hotel.gif";
 import Churn from "../assets/Churn.gif";
+import vora from '../assets/vora.png';
+import VC from '../assets/VC.png';
+import Vitta from '../assets/Vitta.png';
 
 
 const Projects = () => {
   const mernProjects = [
+
     {
-      title: "LMS Platform",
+      title: "GreenVora Exim-Green Export Import",
       description:
-        "A comprehensive Learning Management System with course creation, student enrollment, progress tracking, and interactive learning modules.",
-      tech: ["MongoDB", "Express.js", "React", "Node.js"],
-      image: Portal,
-      liveUrl: "#",
-      githubUrl: "https://github.com/27082004muskan/lms-platform",
-      status: "Coming Soon",
-       duration: "Aug 2025-Current"
-    },
-    {
-      title: "Gemini Clone - GPT Assistant",
-      description:
-        "Built a Gemini-like AI assistant capable of handling 1000+ real-time queries with contextual memory, smart reply suggestions, and live text parsing.",
+        "Developing Greenvora Exim, a MERN-based import-export platform that enables sustainable and reliable trade. Build a responsive UI with React and Tailwind CSS alongside a scalable backend using Node.js, Express, and MongoDB. Implement solid authentication and comprehensive admin control features.",
       tech: ["React.js", "Node.js", "Express.js", "GPT API"],
-      image: Gemini,
-      liveUrl: "#",
+      image: vora,
+      liveUrl: "https://greenvora-exim-frontend.onrender.com/",
       githubUrl: "https://github.com/27082004muskan/Gemini",
-       duration: "June 2025-July 2025"
+       duration: "Dec 2025-Present"
     },
     {
       title: "VittaVardhan - ESG Mutual Fund Investment",
       description:
         "A fintech platform for ESG investing with interactive investment simulator, real-time data fetching, AI-powered fund recommendations, and impact tracking.",
       tech: ["React", "Node.js", "MongoDB", "Express.js"],
-      image: ESG,
+      image: Vitta,
       liveUrl: "#",
       githubUrl:
         "https://github.com/27082004muskan/GreenVest---ESG-Mutual-Funds",
-         duration: "Jan 2025-Feb 2025"
+         duration: "Jan 2025-Nov 2025"
+    },
+        {
+      title: "LMS Platform",
+      description:
+        "A comprehensive Learning Management System with course creation, student enrollment, progress tracking, and interactive learning modules.",
+      tech: ["MongoDB", "Express.js", "React", "Node.js"],
+      image: VC,
+      liveUrl: "https://lms-platform-mern-stack.onrender.com/",
+      githubUrl: "https://github.com/27082004muskan/lms-platform",
+   
+       duration: "Aug 2025-Oct 2025"
     },
   ];
 

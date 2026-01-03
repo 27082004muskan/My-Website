@@ -1,101 +1,162 @@
 import React from 'react';
 import { 
   Briefcase, Calendar, MapPin, TrendingUp, Code, 
-  Building, Target, ArrowRight
+  Building, Target, ArrowRight, Star, Award
 } from 'lucide-react';
 
 const Experience = () => {
   const experiences = [
     {
       id: 1,
+      title: "ShadowFox Virtual Internship",
+      company: "ShadowFox",
+      type: "Web Development Internship",
+      duration: "Jan 2026-Present",
+      location: "Online",
+      achievements: [
+       "Working on real-world projects using HTML, CSS, JavaScript, and React"
+      ],
+      skills: ["Mern", "Github"],
+      
+    },
+    {
+      id: 2,
       title: "Full Stack Developer Intern",
       company: "The Fin Lit Project",
       type: "Full-time Internship",
-      duration: "June 2025 - October 2025",
+      duration: "Jun 2025 - Oct 2025 • 5 mos",
       location: "Remote",
       achievements: [
-        "Revamped The Fin Lit Project’s digital platform using the MERN Stack (MongoDB, Express.js, React.js, Node.js) and Tailwind CSS. Designed and deployed a full-featured website on Hostinger, developing key modules like Fin Lit Learn, Invest, and Sustainable Investing. Contributed to the ESG screening tool, cross-platform synchronization, QA testing, and documentation while delivering a finance micro-course promoting financial literacy and sustainability."
+        "Revamped MERN platform with Fin Lit Learn, Invest modules",
+        "Deployed on Hostinger + ESG screening tool + QA testing"
       ],
-      skills: ["MERN Stack", "UI/UX", "WordPress", "APIs"],
-      // impact: "50% Engagement ↑"
-    }
+      skills: ["MERN", "UI/UX", "APIs", "Hostinger"],
+      impact: "Platform Revamp"
+    },
+    {
+      id: 3,
+      title: "Data Analytics Intern",
+      company: "Deloitte Australia - Forage",
+      type: "Virtual Experience",
+      duration: "Feb 2025 - Mar 2025 • 2 mos",
+      location: "Remote",
+      achievements: [
+        "Data analysis & forensic tech program",
+        "Advanced analytics + reporting"
+      ],
+      skills: ["Data Analysis", "Excel", "Tableau"],
+      impact: "Analytics"
+    },
+    {
+      id: 4,
+      title: "Data Visualization",
+      company: "TATA Group - Forage",
+      type: "Virtual Experience",
+      duration: "Jan 2025 - Feb 2025 • 2 mos",
+      location: "Remote",
+      achievements: [
+        "Business intelligence simulation",
+        "Data storytelling & dashboards"
+      ],
+      skills: ["Data Viz", "BI", "Tableau"],
+      impact: "Visualization"
+    },
+    
   ];
 
   return (
-    <section id="experience" className="py-16 bg-gradient-to-br from-gray-50 via-slate-50 to-gray-100 w-full">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+    <section id="experience" className="py-20 bg-gradient-to-br from-gray-50 via-slate-50 to-gray-100">
+      <div className="max-w-4xl mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-16 w-full">
-          <div className="inline-flex items-center justify-center space-x-3 mb-6 w-full">
-            <h2 className="text-5xl font-bold bg-gradient-to-r from-gray-600 via-stone-700 to-orange-800 bg-clip-text text-transparent">
-              Work Experience
+        <div className="text-center mb-20">
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <Star className="w-6 h-6 text-orange-500" />
+            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-700 via-gray-600 to-orange-700 bg-clip-text text-transparent">
+              Experience Timeline
             </h2>
+            <Award className="w-6 h-6 text-orange-500" />
           </div>
-          <div className="w-32 h-1 mx-auto bg-gradient-to-r from-gray-500 to-orange-700"></div>
         </div>
 
-        {/* Horizontal Full Width Cards */}
-        <div className="space-y-12 w-full">
-          {experiences.map((experience) => (
-            <div 
+        {/* Timeline */}
+        <div className="relative">
+          {/* Center Line */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-orange-400 via-orange-300 to-orange-500"></div>
+          
+          {experiences.map((experience, index) => (
+            <div
               key={experience.id}
-              className="w-full p-8 lg:p-12 rounded-3xl shadow-xl border bg-gradient-to-r from-gray-100 to-stone-50 border-orange-300"
+              className={`flex items-center mb-16 lg:mb-24 relative ${
+                index % 2 === 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'
+              }`}
             >
-              <div className="flex flex-col lg:flex-row items-start gap-8 w-full">
-                {/* Left Content */}
-                <div className="flex-1 w-full lg:w-auto">
-                  <div className="flex items-center gap-4 mb-6">
-                    {/* <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-700 flex items-center justify-center text-2xl shadow-lg">
-                      {experience.logo}
-                    </div> */}
-                    <div>
-                      <h3 className="text-3xl font-bold text-gray-700">
-                        {experience.title}
-                      </h3>
-                      <div className="flex items-center gap-2 mt-1">
-                        <Building className="w-5 h-5 text-gray-600" />
-                        <span className="text-xl font-semibold text-gray-500">{experience.company}</span>
-                      </div>
+              {/* Timeline Dot */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gradient-to-r from-orange-500 to-orange-400 rounded-full shadow-lg border-4 border-white z-10"></div>
+
+              {/* Content Card - No Boxes */}
+              <div className={`flex-1 px-6 py-6 lg:py-8 lg:px-8 bg-white/60 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-100/50 hover:shadow-xl hover:border-orange-200/70 transition-all duration-500 w-full max-w-md mx-auto lg:mx-0 ${
+                index % 2 === 0 ? 'lg:ml-0 lg:mr-auto' : 'lg:mr-0 lg:ml-auto'
+              }`}>
+                
+                {/* Role Header */}
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex-1">
+                    <h3 className="text-lg lg:text-xl font-bold text-gray-900 mb-1 leading-tight">
+                      {experience.title}
+                    </h3>
+                    <div className="flex items-center gap-2 mb-3">
+                      <Building className="w-4 h-4 text-orange-600 flex-shrink-0" />
+                      <span className="text-sm font-semibold text-gray-700">{experience.company}</span>
                     </div>
                   </div>
-
-                  <div className="flex flex-wrap gap-4 mb-8 text-lg text-gray-700">
-                    <span className="px-4 py-2 bg-gray-100 rounded-xl border border-gray-200 font-medium">{experience.type}</span>
-                    <span className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-xl border border-gray-200 font-medium">
-                      <Calendar className="w-4 h-4" /> {experience.duration}
-                    </span>
-                    <span className="flex items-center gap-2 px-4 py-2 bg-gray-100 rounded-xl border border-gray-200 font-medium">
-                      <MapPin className="w-4 h-4" /> {experience.location}
-                    </span>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-4 mb-8">
-                    {experience.skills.map((skill, i) => (
-                      <span key={i} className="px-4 py-2 bg-gradient-to-r from-gray-700/90 via-stone-600/85 to-orange-700/70 
-                      text-gray-200 font-semibold rounded-xl border border-gray-300">
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-
-  
                 </div>
 
-                {/* Right Achievements */}
-                <div className="flex-1 w-full">
-                  <h4 className="text-2xl font-bold mb-6 flex items-center gap-3 bg-gradient-to-r  text-gray-600 bg-clip-text">
-                    <Target className="w-8 h-8" />
-                    Key Results
-                  </h4>
-                  <div className="space-y-4">
-                    {experience.achievements.map((achievement, i) => (
-                      <div key={i} className="flex items-start gap-4 p-4 bg-white/60 rounded-2xl border border-orange-100">
-                        {/* <ArrowRight className="w-6 h-6 text-gray-600 mt-1 flex-shrink-0" /> */}
-                        <span className="text-lg text-gray-600 font-medium leading-relaxed">{achievement}</span>
-                      </div>
-                    ))}
-                  </div>
+                {/* Metadata - Smaller Text */}
+                <div className="flex flex-wrap gap-2 mb-4 text-xs">
+                  <span className="px-3 py-1 bg-gradient-to-r from-gray-100 to-gray-50 rounded-lg font-medium text-gray-700 border border-gray-200">
+                    {experience.type}
+                  </span>
+                  <span className="flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-gray-100 to-gray-50 rounded-lg font-medium text-gray-700 border border-gray-200">
+                    <Calendar className="w-3 h-3" />
+                    {experience.duration}
+                  </span>
+                  <span className="flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-gray-100 to-gray-50 rounded-lg font-medium text-gray-700 border border-gray-200">
+                    <MapPin className="w-3 h-3" />
+                    {experience.location}
+                  </span>
                 </div>
+
+                {/* Skills - Compact */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {experience.skills.map((skill, i) => (
+                    <span
+                      key={i}
+                      className="px-3 py-1 rounded-lg text-xs font-semibold border text-gray-700 bg-gradient-to-r from-orange-50/80 to-gray-50 border-orange-200/50 hover:bg-orange-100 transition-colors"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Achievements - Smaller Text, No Boxes */}
+                <div className="space-y-2">
+                  {experience.achievements.map((achievement, i) => (
+                    <div key={i} className="flex items-start gap-2 text-sm leading-relaxed">
+                      <div className="w-1.5 h-1.5 mt-2 bg-gradient-to-r from-orange-400 to-orange-500 rounded-full flex-shrink-0"></div>
+                      <span className="text-gray-700 font-medium">{achievement}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Impact Badge */}
+                {experience.id !== 4 && (
+                  <div className="mt-4 pt-3 border-t border-gray-100">
+                    <span className="inline-flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-orange-50 to-orange-100 rounded-lg border border-orange-200 text-xs font-semibold text-orange-800">
+                      <TrendingUp className="w-3 h-3" />
+                      {experience.impact}
+                    </span>
+                  </div>
+                )}
               </div>
             </div>
           ))}

@@ -47,11 +47,15 @@ const Activities = () => {
     2025: [
       { title: "IIIT HackFinance", desc: "Top 30 Fintech Hackathon", date: "Jan", icon: Trophy, category: "Achievement", color: "#f59e0b" },
       { title: "MarQing Minds Competition", desc: "MDI Gurgaon case study", date: "Feb 13", icon: BarChart3, category: "Competition", color: "#8b5cf6" },
-      { title: "CodeHers 2025", desc: "Walmart Global Tech", date: "Apr 15", icon: Code, category: "Competition", color: "#3b82f6" },
+  
       { title: "Unstop Talent Park", desc: "Cleared 2 rounds", date: "May 30", icon: Award, category: "Achievement", color: "#10b981" },
-      { title: "Wipro TalentNext Java", desc: "Full Stack training", date: "Aug", icon: Code, category: "Training", color: "#3b82f6" },
+     
       { title: "GFG 160 Days Code", desc: "Coding challenge", date: "Jul", icon: Target, category: "Challenge", color: "#10b981" },
-      { title: "AWS Cloud Foundation", desc: "Cloud computing course", date: "Aug", icon: Globe, category: "Cloud", color: "#06b6d4" }
+      { title: "HackCbs 8.0 ", desc: "India largest run Hackathon", date: "Nov", icon: Globe, category: "Hackathon", color: "#06b6d4" } ,
+       { title: "Qyrus QAPI ", desc: " Hackcbs track Winner", date: "Nov", icon: Trophy, category: "Winner", color: "#06b6d4" }
+    ] ,
+    2026:[
+      { title: "Shadowfox virtual Internship", desc: "Virtual internship", date: "Jan", icon: Zap, category: "Internship", color: "#3b82f6" },
     ]
   };
 
