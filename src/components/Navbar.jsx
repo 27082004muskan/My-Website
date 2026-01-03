@@ -28,7 +28,7 @@ const Navbar = () => {
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
       isScrolled 
-        ? 'bg-gray-900/95 backdrop-blur-lg border-b border-gray-800/50 shadow-lg' 
+        ? 'bg-gray-900/80 backdrop-blur-lg border-b border-gray-800/50 shadow-lg' 
         : 'bg-gray-900/80 backdrop-blur-sm'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -58,15 +58,15 @@ const Navbar = () => {
           {/* Social Icons */}
           <div className="hidden md:flex items-center space-x-4">
             <a href="https://www.linkedin.com/in/muskan-gupta-639065250/" target="_blank" rel="noopener noreferrer" 
-               className="text-gray-300 hover:text-pink-300 transition-colors duration-200 p-2 hover:bg-gray-800/50 rounded-full hover:bg-gray-700 hover:from-gray-700/90 hover:via-stone-600/85 hover:to-orange-700/70">
+               className="text-gray-300 hover:text-orange-300 transition-colors duration-200 p-2 hover:bg-gray-800/50 rounded-full hover:bg-gray-700 hover:from-gray-700/90 hover:via-stone-600/85 hover:to-orange-700/70">
               <Linkedin className="w-5 h-5" />
             </a>
             <a href="https://github.com/27082004muskan" target="_blank" rel="noopener noreferrer"
-               className="text-gray-300 hover:text-pink-300 transition-colors duration-200 p-2 hover:bg-gray-800/50 rounded-full hover:bg-gray-700 hover:from-gray-700/90 hover:via-stone-600/85 hover:to-orange-700/70">
+               className="text-gray-300 hover:text-orange-700 transition-colors duration-200 p-2 hover:bg-gray-800/50 rounded-full hover:bg-gray-700 hover:from-gray-700/90 hover:via-stone-600/85 hover:to-orange-700/70">
               <Github className="w-5 h-5" />
             </a>
             <a href="mailto:gmuskan.2708@gmail.com"
-               className="text-gray-300 hover:text-pink-300 transition-colors duration-200 p-2 hover:bg-gray-800/50 rounded-full hover:bg-gray-700 hover:from-gray-700/90 hover:via-stone-600/85 hover:to-orange-700/70">
+               className="text-gray-300 hover:text-orange-700 transition-colors duration-200 p-2 hover:bg-gray-800/50 rounded-full hover:bg-gray-700 hover:from-gray-700/90 hover:via-stone-600/85 hover:to-orange-700/70">
               <Mail className="w-5 h-5" />
             </a>
           </div>
@@ -88,7 +88,7 @@ const Navbar = () => {
                 <Link
                   key={item.name}
                   to={item.path}
-                  className="block w-full text-left px-3 py-2 text-gray-300 hover:text-pink-300 hover:bg-gray-800/30 rounded-lg transition-all duration-200 hover:bg-gray-700 hover:from-gray-700/90 hover:via-stone-600/85 hover:to-orange-700/70"
+                  className="block w-full text-left px-3 py-2 text-gray-300 hover:text-orange-500 hover:bg-gray-800/30 rounded-lg transition-all duration-200 hover:bg-gray-700 hover:from-gray-700/90 hover:via-stone-600/85 hover:to-orange-700/70"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}

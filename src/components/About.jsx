@@ -7,8 +7,8 @@ import Muskan from '../assets/Muskan.jpg';
 const About = () => {
 
   return (
-    <section id="about" className="py-20 bg-gradient-to-r from-gray-50 via-slate-50 to-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="py-40 bg-gradient-to-r from-gray-50 via-slate-50 to-gray-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Photo */}
         <div className="flex justify-center lg:justify-start">

@@ -5,9 +5,7 @@ import ESG from "../assets/Esg.gif";
 import Road from "../assets/road.gif";
 import Hotel from "../assets/Hotel.gif";
 import Churn from "../assets/Churn.gif";
-// import chartImage from '../assets/images/chart.png';
-// import hotelImage from '../assets/images/hotel.png';
-// import graphImage from '../assets/images/graph.png';
+
 
 const Projects = () => {
   const mernProjects = [
@@ -33,7 +31,7 @@ const Projects = () => {
        duration: "June 2025-July 2025"
     },
     {
-      title: "HackVest - ESG Mutual Fund Investment",
+      title: "VittaVardhan - ESG Mutual Fund Investment",
       description:
         "A fintech platform for ESG investing with interactive investment simulator, real-time data fetching, AI-powered fund recommendations, and impact tracking.",
       tech: ["React", "Node.js", "MongoDB", "Express.js"],
@@ -83,16 +81,16 @@ const Projects = () => {
     "group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200";
 
   return (
-    <section id="projects" className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-25 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-8 sm:px-8 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-600/80 via-stone-700/80 to-orange-500 bg-clip-text text-transparent">
             Featured Projects
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          {/* <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             A showcase of innovative solutions spanning MERN Stack development
             and Data Analytics
-          </p>
+          </p> */}
         </div>
 
         {/* MERN Stack Projects - Grid Layout */}

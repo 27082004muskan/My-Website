@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -14,8 +14,8 @@ import Quote from "./components/Quote";
 import './App.css';
 
 const AppContent = () => {
-  const location = useLocation();
-  const showFooter = location.pathname === '/';
+  // const location = useLocation();
+  // const showFooter = location.pathname === '/';
 
   return (
     <>
@@ -42,7 +42,7 @@ const AppContent = () => {
         <Route path="/experience" element={<Experience />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
-      {showFooter && <Footer />}
+      <Footer />
     </>
   );
 };
