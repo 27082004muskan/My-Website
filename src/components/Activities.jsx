@@ -1,549 +1,208 @@
-import React, { useState, useRef, useEffect, useMemo } from "react";
-import { Calendar, Briefcase, ChevronRight, ChevronLeft, Star, Target, Award, Trophy, Users, Code, BarChart, Globe, Zap, Building, CloudRain } from "lucide-react";
+import React, { useState, useRef, useEffect } from 'react';
+import { 
+  Calendar, 
+  ChevronLeft, 
+  ChevronRight, 
+  Star, 
+  Target, 
+  Award, 
+  Trophy, 
+  Users, 
+  Code, 
+  BarChart3, 
+  Zap, 
+  Globe,
+  Briefcase
+} from 'lucide-react';
 
 const Activities = () => {
-  const [hoveredCard, setHoveredCard] = useState(null);
-  const containerRef = useRef(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [setScrollY] = useState(0);
+  const [selectedYear, setSelectedYear] = useState('2025');
+  const scrollRef = useRef(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
 
-  // Individual refs for each year's scroll container
-  const scrollRef2022 = useRef(null);
-  const scrollRef2023 = useRef(null);
-  const scrollRef2024 = useRef(null);
-  const scrollRef2025 = useRef(null);
+  const activitiesByYear = {
+    2022: [
+      { title: "Mighty Minds Conference", desc: "India's Biggest Interactive Knowledge Exchange", date: "Nov 2", icon: Target, category: "Conference", color: "#3b82f6" },
+      { title: "InnoTech Participation", desc: "Technology innovation event", date: "Nov 18", icon: Zap, category: "Innovation", color: "#8b5cf6" },
+      { title: "DevTown Tinder Clone", desc: "HTML & CSS project", date: "Dec", icon: Code, category: "Project", color: "#10b981" },
+      { title: "Internshala Student Partner", desc: "Career development partner", date: "Dec", icon: Users, category: "Partnership", color: "#f59e0b" }
+    ],
+    2023: [
+      { title: "First Hackathon Delhi", desc: "BPV Delhi hackathon", date: "Jun 15", icon: Zap, category: "Hackathon", color: "#ec4899" },
+      { title: "Python to Web Bootcamp", desc: "Data Analytics journey", date: "Jul", icon: Code, category: "Bootcamp", color: "#f59e0b" },
+      { title: "AI Expert Talk", desc: "VK Panchal session", date: "Aug", icon: Award, category: "Workshop", color: "#6366f1" },
+      { title: "Microsoft Learn Ambassador", desc: "Web Servers program", date: "Sep", icon: Globe, category: "Program", color: "#06b6d4" },
+      { title: "Git & GitHub Bootcamp", desc: "Version control skills", date: "Oct", icon: Code, category: "Bootcamp", color: "#8b5cf6" },
+      { title: "Japan Work Opportunities", desc: "Career prospects talk", date: "Nov", icon: Globe, category: "Career", color: "#10b981" },
+      { title: "Node.js Bootcamp", desc: "Backend development", date: "Dec", icon: Code, category: "Bootcamp", color: "#10b981" }
+    ],
+    2024: [
+      { title: "Adobe Photoshop Bootcamp", desc: "Graphic Designing", date: "Jan", icon: Award, category: "Design", color: "#ec4899" },
+      { title: "Flipkart Runway S4", desc: "Flagship competition", date: "Mar 22", icon: Trophy, category: "Competition", color: "#f59e0b" },
+      { title: "AI Music Fest Microsoft", desc: "Microsoft Gurgaon event", date: "Jun 15", icon: Award, category: "Event", color: "#3b82f6" },
+      { title: "Google Arcade Facilitator", desc: "Program facilitation", date: "Aug", icon: Users, category: "Facilitation", color: "#f97316" },
+      { title: "XR Creator Hackathon", desc: "Delhi meetup", date: "Oct", icon: Zap, category: "Hackathon", color: "#06b6d4" }
+    ],
+    2025: [
+      { title: "IIIT HackFinance", desc: "Top 30 Fintech Hackathon", date: "Jan", icon: Trophy, category: "Achievement", color: "#f59e0b" },
+      { title: "MarQing Minds Competition", desc: "MDI Gurgaon case study", date: "Feb 13", icon: BarChart3, category: "Competition", color: "#8b5cf6" },
+      { title: "CodeHers 2025", desc: "Walmart Global Tech", date: "Apr 15", icon: Code, category: "Competition", color: "#3b82f6" },
+      { title: "Unstop Talent Park", desc: "Cleared 2 rounds", date: "May 30", icon: Award, category: "Achievement", color: "#10b981" },
+      { title: "Wipro TalentNext Java", desc: "Full Stack training", date: "Aug", icon: Code, category: "Training", color: "#3b82f6" },
+      { title: "GFG 160 Days Code", desc: "Coding challenge", date: "Jul", icon: Target, category: "Challenge", color: "#10b981" },
+      { title: "AWS Cloud Foundation", desc: "Cloud computing course", date: "Aug", icon: Globe, category: "Cloud", color: "#06b6d4" }
+    ]
+  };
 
-  // Scroll button state tracking
-  const [canScrollLeft, setCanScrollLeft] = useState({
-    "2022": false,
-    "2023": false,
-    "2024": false,
-    "2025": false
-  });
-  const [canScrollRight, setCanScrollRight] = useState({
-    "2022": true,
-    "2023": true,
-    "2024": true,
-    "2025": true
-  });
+  const years = Object.keys(activitiesByYear).reverse();
 
-  // Group refs in a stable object using useMemo
-  const refsByYear = useMemo(
-    () => ({
-      "2022": scrollRef2022,
-      "2023": scrollRef2023,
-      "2024": scrollRef2024,
-      "2025": scrollRef2025,
-    }),
-    []
-  );
-
-  // Define year colors separately
-  const yearColors = useMemo(() => ({
-    "2022": "from-blue-500 to-cyan-500",
-    "2023": "from-purple-500 to-violet-500", 
-    "2024": "from-pink-500 to-rose-500",
-    "2025": "from-emerald-500 to-green-500"
-  }), []);
-
-  const activitiesByYear = useMemo(
-    () => ({
-      2022: [
-        {
-          title: "Mighty Minds Conference",
-          description: "Attended India's Biggest Interactive Knowledge Exchange Programme",
-          date: "November 2",
-          icon: Target,
-          category: "Conference",
-          color: "from-blue-500 to-cyan-500",
-        },
-        {
-          title: "InnoTech Participation",
-          description: "Participated in technology innovation event with emerging tech ideas",
-          date: "November 18",
-          icon: Zap,
-          category: "Innovation",
-          color: "from-purple-500 to-violet-500",
-        },
-        {
-          title: "DevTown Tinder Clone",
-          description: "Built Tinder clone using HTML and CSS",
-          date: "December",
-          icon: Code,
-          category: "Project",
-          color: "from-green-500 to-emerald-500",
-        },
-        {
-          title: "Internshala Student Partner",
-          description: "Active student partner promoting career development",
-          date: "December",
-          icon: Users,
-          category: "Partnership",
-          color: "from-orange-500 to-red-500",
-        },
-      ],
-      2023: [
-        {
-          title: "First Hackathon Delhi",
-          description: "Participated in first hackathon experience at BPV Delhi",
-          date: "June 15",
-          icon: Zap,
-          category: "Hackathon",
-          color: "from-pink-500 to-rose-500",
-        },
-        {
-          title: "Python to Web Bootcamp",
-          description: "4-Day Data Analytics Bootcamp journey",
-          date: "July",
-          icon: Code,
-          category: "Bootcamp",
-          color: "from-yellow-500 to-amber-500",
-        },
-        {
-          title: "AI Expert Talk by VK Panchal",
-          description: "Attended Artificial Intelligence expert session",
-          date: "August",
-          icon: Award,
-          category: "Workshop",
-          color: "from-indigo-500 to-blue-500",
-        },
-        {
-          title: "Microsoft Learn Ambassador",
-          description: "Understanding of Web Servers program",
-          date: "September",
-          icon: Globe,
-          category: "Program",
-          color: "from-teal-500 to-cyan-500",
-        },
-        {
-          title: "Git & GitHub Bootcamp",
-          description: "Version control and collaboration skills development",
-          date: "October",
-          icon: Code,
-          category: "Bootcamp",
-          color: "from-violet-500 to-purple-500",
-        },
-        {
-          title: "Japan Work Opportunities",
-          description: "Orientation by Ashutosh Singh & Yumi Ishida on career prospects",
-          date: "November",
-          icon: Globe,
-          category: "Career Talk",
-          color: "from-lime-500 to-green-500",
-        },
-        {
-          title: "Node.js Bootcamp",
-          description: "Backend development with Node.js",
-          date: "December",
-          icon: Code,
-          category: "Bootcamp",
-          color: "from-emerald-500 to-teal-500",
-        },
-      ],
-      2024: [
-        {
-          title: "Adobe Photoshop Bootcamp",
-          description: "Graphic Designing with Adobe Photoshop",
-          date: "January",
-          icon: Award,
-          category: "Design",
-          color: "from-pink-500 to-purple-500",
-        },
-        {
-          title: "Flipkart Runway: Season 4",
-          description: "Participated in Flipkart's flagship competition program",
-          date: "March 22",
-          icon: Trophy,
-          category: "Competition",
-          color: "from-orange-500 to-red-500",
-        },
-        {
-          title: "AI Music Fest Microsoft",
-          description: "Attended AI Music Festival at Microsoft Gurgaon",
-          date: "June 15",
-          icon: Award,
-          category: "Event",
-          color: "from-blue-500 to-indigo-500",
-        },
-        {
-          title: "Google Arcade Facilitator",
-          description: "Facilitated Google Arcade program activities",
-          date: "August",
-          icon: Users,
-          category: "Facilitation",
-          color: "from-red-500 to-orange-500",
-        },
-        {
-          title: "XR Creator Hackathon Delhi",
-          description: "XR Creator Hackathon Meetup by Chhavi Garg",
-          date: "October",
-          icon: Zap,
-          category: "Hackathon",
-          color: "from-cyan-500 to-blue-500",
-        },
-      ],
-      2025: [
-        {
-          title: "IIIT HackFinance",
-          description: "Among Top 30 in IIIT Delhi Fintech Hackathon",
-          date: "January",
-          icon: Trophy,
-          category: "Achievement",
-          color: "from-yellow-500 to-amber-500",
-        },
-        {
-          title: "MarQing Minds: Case Study Competition",
-          description: "Management Development Institute (MDI), Gurgaon - MDI Gurgaon, Haryana",
-          date: "February 13",
-          icon: BarChart,
-          category: "Competition",
-          color: "from-purple-500 to-indigo-500",
-        },
-        {
-          title: "CodeHers 2025",
-          description: "Walmart Global Tech India - Online Competition",
-          date: "April 15",
-          icon: Code,
-          category: "Competition",
-          color: "from-blue-500 to-cyan-500",
-        },
-        {
-          title: "Unstop Talent Park 2025",
-          description: "Cleared 2 rounds in prestigious talent acquisition program",
-          date: "May 30",
-          icon: Award,
-          category: "Achievement",
-          color: "from-emerald-500 to-green-500",
-        },
-        {
-          title: "XR Creator Hackathon Delhi",
-          description: "XR Creator Hackathon Meetup by Chhavi Garg",
-          date: "October",
-          icon: Zap,
-          category: "Hackathon",
-          color: "from-cyan-500 to-blue-500",
-        },
-        {
-          title: "Flipkart Grid 2025",
-          description: "Participated in Flipkart's flagship engineering competition",
-          date: "2025",
-          icon: Trophy,
-          category: "Competition",
-          color: "from-orange-500 to-red-500",
-        },
-        {
-          title: "Wipro TalentNext - Java Full Stack Program",
-          description: "Comprehensive Java full stack development training program",
-          date: "August 2025",
-          icon: Code,
-          category: "Training Program", 
-          color: "from-blue-500 to-indigo-600",
-        },
-        {
-          title: "GFG 160 Days of Code Challenge",
-          description: "GeeksforGeeks intensive coding practice and problem solving",
-          date: "July 2025",
-          icon: Target,
-          category: "Coding Challenge",
-          color: "from-green-500 to-emerald-600",
-        },
-        {
-          title: "AWS Academy Cloud Foundation",
-          description: "AWS Skill Builder fundamental cloud computing course",
-          date: "August 2025", 
-          icon: CloudRain,
-          category: "Cloud Computing",
-          color: "from-purple-500 to-violet-600",
-        },
-        {
-          title: "NPTEL Online Courses",
-          description: "National Programme on Technology Enhanced Learning",
-          date: "August 2025",
-          icon: Target,
-          category: "Academic Course",
-          color: "from-pink-500 to-rose-600",
-        }
-      ],
-    }),
-    []
-  );
-
-  // Mouse tracking for background blob
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      setMousePosition({
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
-      });
-    };
-
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    const container = containerRef.current;
-    if (container) {
-      container.addEventListener("mousemove", handleMouseMove);
-      window.addEventListener('scroll', handleScroll);
-      return () => {
-        container.removeEventListener("mousemove", handleMouseMove);
-        window.removeEventListener('scroll', handleScroll);
-      };
-    }
-  }, []);
-
-  // FIXED: Completely new scroll function that scrolls by exactly one card width
-  const scrollHorizontal = (ref, direction, year) => {
-    const container = ref.current;
+  const scrollHorizontal = (direction) => {
+    const container = scrollRef.current;
     if (!container) return;
     
-    // Scroll by exactly one card + gap (344px total)
-    const scrollAmount = 344; // 320px (card) + 24px (gap)
-    const currentScroll = container.scrollLeft;
-    const maxScroll = container.scrollWidth - container.clientWidth;
+    const cardWidth = 340; // card + gap
+    const scrollAmount = direction === 'right' ? cardWidth : -cardWidth;
     
-    let newScrollPosition;
-    
-    if (direction === 'right') {
-      newScrollPosition = Math.min(currentScroll + scrollAmount, maxScroll);
-    } else {
-      newScrollPosition = Math.max(currentScroll - scrollAmount, 0);
-    }
-    
-    console.log(`${year} - Direction: ${direction}, Current: ${currentScroll}, New: ${newScrollPosition}, Max: ${maxScroll}`);
-    
-    container.scrollTo({
-      left: newScrollPosition,
+    container.scrollBy({
+      left: scrollAmount,
       behavior: 'smooth'
     });
   };
 
-  // FIXED: More accurate scroll position checking
-  const checkScrollPosition = (ref, year) => {
-    const container = ref.current;
-    if (!container) return;
-    
-    const { scrollLeft, scrollWidth, clientWidth } = container;
-    const maxScroll = scrollWidth - clientWidth;
-    
-    console.log(`${year} - ScrollLeft: ${scrollLeft}, ScrollWidth: ${scrollWidth}, ClientWidth: ${clientWidth}, MaxScroll: ${maxScroll}`);
-    
-    setCanScrollLeft(prev => ({
-      ...prev,
-      [year]: scrollLeft > 5
-    }));
-    
-    setCanScrollRight(prev => ({
-      ...prev,
-      [year]: scrollLeft < maxScroll - 5
-    }));
-  };
-
-  // Set up scroll listeners for each year
   useEffect(() => {
-    const refs = Object.entries(refsByYear);
-    const listeners = [];
+    const container = scrollRef.current;
+    if (!container) return;
 
-    refs.forEach(([year, ref]) => {
-      const container = ref.current;
-      if (container) {
-        const handleScroll = () => checkScrollPosition(ref, year);
-        container.addEventListener('scroll', handleScroll);
-        handleScroll(); // Initial check
-        listeners.push(() => container.removeEventListener('scroll', handleScroll));
-      }
-    });
-
-    return () => {
-      listeners.forEach(cleanup => cleanup());
+    const handleScroll = () => {
+      const { scrollLeft, scrollWidth, clientWidth } = container;
+      setCanScrollLeft(scrollLeft > 10);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
     };
-  }, [refsByYear]);
 
-  const ActivityCard = ({ activity, uniqueKey }) => (
-    <div
-      className="flex-none w-80 h-64 rounded-2xl p-6 bg-white shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-rotate-1 group cursor-pointer relative overflow-hidden border border-gray-100"
-      onMouseEnter={() => setHoveredCard(uniqueKey)}
-      onMouseLeave={() => setHoveredCard(null)}
-      style={{
-        boxShadow:
-          hoveredCard === uniqueKey
-            ? "0 25px 50px -12px rgba(59,130,246,0.18)"
-            : "0 10px 30px rgba(0,0,0,0.08)",
-      }}
-    >
-      <div
-        className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 bg-gradient-to-br ${activity.color}`}
+    container.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
+    return () => container.removeEventListener('scroll', handleScroll);
+  }, [selectedYear]);
+
+  useEffect(() => {
+    scrollRef.current?.scrollTo({ left: 0, behavior: 'smooth' });
+  }, [selectedYear]);
+
+  const ActivityCard = ({ activity }) => (
+    <div className="group flex-none w-[320px] h-64 bg-white/80 backdrop-blur-xl rounded-2xl p-6 border border-white/50 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer hover:bg-white">
+      <div 
+        className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-500"
+        style={{ backgroundColor: activity.color + '20' }}
       />
-
       <div className="relative z-10 h-full flex flex-col justify-between">
         <div>
           <div className="flex items-center justify-between mb-4">
-            <div className="text-gray-700 group-hover:scale-110 group-hover:rotate-12 transition-all duration-500">
-              <activity.icon className="w-10 h-10" />
+            <div className="p-3 rounded-xl bg-gradient-to-r from-gray-900/10 to-white/20 group-hover:scale-110 transition-all duration-300">
+              <activity.icon className="w-6 h-6" style={{ color: activity.color }} />
             </div>
-            <div
-              className={`px-3 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r ${activity.color} group-hover:scale-110 transition-all duration-300`}
-            >
+            <span className="px-3 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r from-gray-900 to-gray-800 group-hover:from-orange-600 group-hover:to-orange-500 transition-all duration-300">
               {activity.category}
-            </div>
+            </span>
           </div>
-
-          <h3 className="text-lg font-bold mb-3 text-gray-800">{activity.title}</h3>
-          <p className="text-sm text-gray-600">{activity.description}</p>
+          <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-gray-800 transition-colors">{activity.title}</h3>
+          <p className="text-sm text-gray-600 leading-relaxed">{activity.desc}</p>
         </div>
-
-        <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-          <div className="flex items-center space-x-2 text-gray-500">
+        <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+          <div className="flex items-center gap-2 text-sm text-gray-500">
             <Calendar className="w-4 h-4" />
-            <span className="text-sm font-medium">{activity.date}</span>
+            <span className="font-medium">{activity.date}</span>
           </div>
-          <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-gray-600 group-hover:translate-x-1 transition-all duration-300" />
+          <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-gray-700 group-hover:translate-x-1 transition-all duration-300" />
         </div>
-      </div>
-    </div>
-  );
-
-  const ScrollButton = ({ direction, onClick, canScroll, gradientColors }) => (
-    <button
-      onClick={onClick}
-      disabled={!canScroll}
-      className={`absolute ${direction === 'left' ? 'left-4' : 'right-4'} top-1/2 transform -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-gradient-to-r ${gradientColors} backdrop-blur-xl border border-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-lg`}
-    >
-      {direction === 'left' ? 
-        <ChevronLeft className="w-5 h-5 text-white" /> : 
-        <ChevronRight className="w-5 h-5 text-white" />
-      }
-    </button>
-  );
-
-  const YearSection = ({ year, activities, yearColor, scrollRef }) => (
-    <div className="mb-16">
-      <div className="text-center mb-8">
-        <div
-          className={`inline-flex items-center gap-3 bg-gradient-to-r ${yearColor} text-white rounded-2xl px-6 py-3 mb-4 shadow-lg`}
-        >
-          <Target className="w-6 h-6" />
-          <span className="text-2xl font-black">{year}</span>
-          <Star className="w-5 h-5" />
-        </div>
-      </div>
-
-      <div className="relative">
-        {/* FIXED: Removed snap scroll and changed to regular overflow */}
-        <div
-          ref={scrollRef}
-          className="flex items-start gap-6 overflow-x-auto scrollbar-hide pb-4"
-          style={{ 
-            scrollbarWidth: 'none', 
-            msOverflowStyle: 'none'
-          }}
-        >
-          {activities.map((activity, idx) => {
-            const uniqueKey = `${year}-${idx}`;
-            return <ActivityCard key={uniqueKey} uniqueKey={uniqueKey} activity={activity} />;
-          })}
-        </div>
-
-        <ScrollButton
-          direction="left"
-          onClick={() => scrollHorizontal(scrollRef, 'left', year)}
-          canScroll={canScrollLeft[year]}
-          gradientColors={`${yearColor} opacity-80`}
-        />
-
-        <ScrollButton
-          direction="right"
-          onClick={() => scrollHorizontal(scrollRef, 'right', year)}
-          canScroll={canScrollRight[year]}
-          gradientColors={`${yearColor} opacity-80`}
-        />
       </div>
     </div>
   );
 
   return (
-    <section
-      ref={containerRef}
-      id="activities"
-      className="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden"
-    >
-      {/* Background blobs */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div
-          className="absolute w-96 h-96 bg-blue-100/30 rounded-full blur-3xl transition-all duration-1000"
-          style={{
-            left: `${mousePosition.x - 200}px`,
-            top: `${mousePosition.y - 200}px`,
-            transform: "translate(-50%, -50%)",
-          }}
-        />
-        <div className="absolute top-20 right-20 w-80 h-80 bg-purple-100/20 rounded-full blur-3xl animate-float-slow" />
-        <div className="absolute bottom-20 left-20 w-72 h-72 bg-pink-100/20 rounded-full blur-3xl animate-float-reverse" />
-
-        <div
-          className="absolute inset-0 opacity-5"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 2px 2px, rgba(99,102,241,0.3) 1px, transparent 0)",
-            backgroundSize: "40px 40px",
-          }}
-        />
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="activities" className="py-24 bg-gradient-to-br from-gray-50 via-slate-50 to-gray-100">
+      <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-black mb-6">
-            Co-Curricular Activities
-            <span className="block text-3xl lg:text-4xl mt-2">2022 - Present</span>
-          </h2>
-
-          <div className="mt-8 flex items-center justify-center gap-4">
-            {["2022", "2023", "2024", "2025"].map((y, i) => (
-              <div
-                key={y}
-                className="w-3 h-3 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 shadow-lg"
-                style={{ animation: `pulse 2s infinite ${i * 0.5}s` }}
-              />
-            ))}
+        <div className="text-center mb-20">
+          <div className="flex items-center justify-center gap-3 mb-8">
+            <Star className="w-7 h-7 text-orange-500" />
+            <h2 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-orange-700 via-gray-800 to-orange-700 bg-clip-text text-transparent">
+              Co-Curricular Activities
+            </h2>
+            <Award className="w-7 h-7 text-orange-500" />
           </div>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">Journey of achievements, competitions, and skill development (2022 - Present)</p>
         </div>
 
-        {/* Render each year section */}
-        {Object.entries(activitiesByYear).map(([year, activities]) => (
-          <YearSection
-            key={year}
-            year={year}
-            activities={activities}
-            yearColor={yearColors[year]}
-            scrollRef={refsByYear[year]}
-          />
-        ))}
+        {/* Year Selector */}
+        <div className="flex flex-wrap gap-3 justify-center mb-16">
+          {years.map((year) => (
+            <button
+              key={year}
+              onClick={() => setSelectedYear(year)}
+              className={`px-6 py-3 rounded-xl font-bold text-sm transition-all duration-300 border-2 ${
+                selectedYear === year
+                  ? 'bg-gradient-to-r from-orange-600 to-orange-500 text-white shadow-lg shadow-orange-500/25 scale-105'
+                  : 'bg-white/50 border-gray-200 hover:border-orange-300 hover:bg-white hover:shadow-md text-gray-800'
+              }`}
+            >
+              {year}
+            </button>
+          ))}
+        </div>
+
+        {/* Activities Grid */}
+        <div className="relative">
+          <div
+            ref={scrollRef}
+            className="flex items-start gap-6 overflow-x-auto scrollbar-hide pb-8 snap-x snap-mandatory"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {activitiesByYear[selectedYear].map((activity, index) => (
+              <ActivityCard key={`${selectedYear}-${index}`} activity={activity} />
+            ))}
+          </div>
+
+          {/* Scroll Buttons */}
+          <button
+            onClick={() => scrollHorizontal('left')}
+            className={`absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-2xl bg-gradient-to-r from-orange-600 to-orange-500 text-white shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 border border-white/20 backdrop-blur-xl ${
+              !canScrollLeft ? 'opacity-30 cursor-not-allowed hover:scale-100' : ''
+            }`}
+            disabled={!canScrollLeft}
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+
+          <button
+            onClick={() => scrollHorizontal('right')}
+            className={`absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-2xl bg-gradient-to-r from-orange-600 to-orange-500 text-white shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 border border-white/20 backdrop-blur-xl ${
+              !canScrollRight ? 'opacity-30 cursor-not-allowed hover:scale-100' : ''
+            }`}
+            disabled={!canScrollRight}
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+        </div>
+
+        {/* Year Summary */}
+        <div className="text-center mt-16 pt-12 border-t border-gray-200">
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <Briefcase className="w-8 h-8 text-orange-500" />
+            <span className="text-2xl font-bold text-gray-800">
+              {activitiesByYear[selectedYear].length} Activities in {selectedYear}
+            </span>
+            <Calendar className="w-8 h-8 text-orange-500" />
+          </div>
+        </div>
       </div>
 
       <style jsx>{`
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
         .scrollbar-hide::-webkit-scrollbar {
           display: none;
         }
-
-        @keyframes float-slow {
-          0%, 100% { transform: translate(0, 0) rotate(0deg); }
-          50% { transform: translate(15px, -15px) rotate(180deg); }
-        }
-        @keyframes float-reverse {
-          0%, 100% { transform: translate(0, 0) rotate(360deg); }
-          50% { transform: translate(-15px, 15px) rotate(180deg); }
-        }
-        @keyframes pulse {
-          0% { transform: scale(1); opacity: 0.8; }
-          50% { transform: scale(1.25); opacity: 1; }
-          100% { transform: scale(1); opacity: 0.8; }
+        .snap-x {
+          scroll-snap-type: x mandatory;
         }
       `}</style>
     </section>
