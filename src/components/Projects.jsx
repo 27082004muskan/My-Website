@@ -78,7 +78,7 @@ const Projects = () => {
 
   // Shared card styling class
   const cardClass =
-    "group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200";
+    "group bg-gray-100 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200";
 
   return (
     <section id="projects" className="py-25 bg-gray-50">
@@ -95,7 +95,7 @@ const Projects = () => {
 
         {/* MERN Stack Projects - Grid Layout */}
         <div className="mb-20">
-          <h3 className="text-3xl font-bold text-center mb-8 text-gray-800">
+          <h3 className="text-3xl font-bold underline text-center mb-8 text-gray-500">
             MERN Stack Projects
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -108,7 +108,7 @@ const Projects = () => {
                     <div className="absolute top-3 right-3 bg-pink-500 text-white px-3 py-1 rounded-full text-xs font-bold">
                       {project.status} */}
                        {project.duration && (
-                    <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm text-purple-600 px-3 py-1 rounded text-xs font-medium">
+                    <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm text-orange-700 px-3 py-1 rounded text-xs font-medium">
                       {project.duration}
                     </div>
                   )}
@@ -116,7 +116,7 @@ const Projects = () => {
 
                 {/* Project Content */}
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-pink-600 transition-colors duration-200">
+                  <h3 className="text-xl font-bold text-gray-600 mb-3 group-hover:text-orange-600 transition-colors duration-200">
                     {project.title}
                   </h3>
                   <p className="text-gray-600 mb-4 text-sm leading-relaxed">
@@ -128,7 +128,7 @@ const Projects = () => {
                     {project.tech.map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="px-3 py-1 bg-pink-50 text-pink-600 rounded-full text-xs font-medium border border-pink-200"
+                        className="px-3 py-1 bg-gray-100 text-orange-700 rounded-full text-xs font-medium border border-gray-200"
                       >
                         {tech}
                       </span>
@@ -137,16 +137,10 @@ const Projects = () => {
 
                   {/* Action Buttons */}
                   <div className="flex space-x-4">
-                    {/* <a
-                      href={project.liveUrl}
-                      className="flex items-center space-x-2 text-pink-600 hover:text-pink-700 transition-colors duration-200"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      <span className="text-sm font-medium">Live Demo</span>
-                    </a> */}
+                  
                     <a
                       href={project.githubUrl}
-                      className="flex items-center space-x-2 text-purple-600 hover:text-purple-700 transition-colors duration-200"
+                      className="flex items-center space-x-2 text-orange-700 hover:text-orange-700 transition-colors duration-200"
                     >
                       <Github className="w-4 h-4" />
                       <span className="text-sm font-medium">GitHub</span>
@@ -160,7 +154,7 @@ const Projects = () => {
 
         {/* Data Analytics Projects - Grid Layout */}
         <div>
-          <h3 className="text-3xl font-bold text-center mb-8 text-gray-800">
+          <h3 className="text-3xl font-bold text-center mb-8 text-gray-500 underline">
             Data Analytics Projects
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -170,7 +164,7 @@ const Projects = () => {
                 <div className="h-48 rounded-t-2xl flex items-center justify-center relative overflow-hidden">
                   <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
                   {project.duration && (
-                    <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm text-purple-600 px-3 py-1 rounded text-xs font-medium">
+                    <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm text-orange-700 px-3 py-1 rounded text-xs font-medium">
                       {project.duration}
                     </div>
                   )}
@@ -178,7 +172,7 @@ const Projects = () => {
 
                 {/* Project Content */}
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-purple-600 transition-colors duration-200">
+                  <h3 className="text-xl font-bold text-gray-600 mb-3 group-hover:text-orange-600 transition-colors duration-200">
                     {project.title}
                   </h3>
                   <p className="text-gray-600 mb-4 text-sm leading-relaxed">
@@ -190,7 +184,7 @@ const Projects = () => {
                     {project.tech.map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="px-3 py-1 bg-purple-50 text-purple-600 rounded-full text-xs font-medium border border-purple-200"
+                        className="px-3 py-1 bg-purple-50 text-orange-700 rounded-full text-xs font-medium border border-purple-200"
                       >
                         {tech}
                       </span>
@@ -208,7 +202,7 @@ const Projects = () => {
                     </a> */}
                     <a
                       href={project.githubUrl}
-                      className="flex items-center space-x-2 text-pink-600 hover:text-pink-700 transition-colors duration-200"
+                      className="flex items-center space-x-2 text-orange-700 hover:text-orange-700 transition-colors duration-200"
                     >
                       <Github className="w-4 h-4" />
                       <span className="text-sm font-medium">GitHub</span>
