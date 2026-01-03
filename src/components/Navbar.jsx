@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Github, Linkedin, Mail, Download, ExternalLink, Code, Database, Palette, Award, Calendar, MapPin, Send, Menu, X, Phone } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Github, Linkedin, Mail, Code, Menu, X } from 'lucide-react';
 
 // Navbar Component
 const Navbar = () => {
@@ -14,13 +15,15 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = ['About', 'Skills', 'Projects', 'Certifications', 'Activities', 'Contact'];
-
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId.toLowerCase().replace(' ', ''));
-    element?.scrollIntoView({ behavior: 'smooth' });
-    setIsMenuOpen(false);
-  };
+  const navItems = [
+    {name: 'Home', path: '/' } ,
+    { name: 'About', path: '/about' },
+    { name: 'Skills', path: '/skills' },
+    { name: 'Projects', path: '/projects' },
+    { name: 'Certifications', path: '/certifications' },
+    { name: 'Activities', path: '/activities' },
+    { name: 'Contact', path: '/contact' }
+  ];
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
@@ -31,24 +34,24 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo and Name */}
-          <div className="flex items-center space-x-3">
+          <Link to="/" className="flex items-center space-x-3">
             <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gray-50 via-slate-50 to-gray-100 flex items-center justify-center shadow-lg">
               <Code className="w-6 h-6 text-gray-500" />
             </div>
             <span className="font-bold text-xl text-white">Creovate</span>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <button
-                key={item}
-                onClick={() => scrollToSection(item)}
+              <Link
+                key={item.name}
+                to={item.path}
                 className="text-gray-300 hover:text-orange-300 transition-colors duration-200 font-medium relative group hover:bg-gray-700 hover:from-gray-700/90 hover:via-stone-600/85 hover:to-orange-700/70 hover:bg-gradient-to-r"
               >
-                {item}
+                {item.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-orange-400 via-stone-500 to-orange-600 group-hover:w-full transition-all duration-300"></span>
-              </button>
+              </Link>
             ))}
           </div>
 
@@ -82,13 +85,14 @@ const Navbar = () => {
           <div className="md:hidden bg-gray-900/95 backdrop-blur-lg border-t border-gray-800/50">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item)}
+                <Link
+                  key={item.name}
+                  to={item.path}
                   className="block w-full text-left px-3 py-2 text-gray-300 hover:text-pink-300 hover:bg-gray-800/30 rounded-lg transition-all duration-200 hover:bg-gray-700 hover:from-gray-700/90 hover:via-stone-600/85 hover:to-orange-700/70"
+                  onClick={() => setIsMenuOpen(false)}
                 >
-                  {item}
-                </button>
+                  {item.name}
+                </Link>
               ))}
             </div>
           </div>

@@ -1,4 +1,5 @@
-import React from'react';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -9,31 +10,49 @@ import Footer from "./components/Footer";
 import Certifications from "./components/Certifications";
 import Activities from "./components/Activities";
 import Experience from "./components/Experience";
-import './App.css'
 import Quote from "./components/Quote";
+import './App.css';
 
-
-function App() {
-
-
+const AppContent = () => {
+  const location = useLocation();
+  const showFooter = location.pathname === '/';
 
   return (
     <>
-     <Navbar/>
-    <Hero/>
-    <About/>
-    <Experience/>
-    <Quote/>
-    <Skills/>
-    <Projects/>
-    <Certifications/>
-    <Activities/>
-    <Contact/>
-    <Footer/>
-
-
+      <Navbar />
+      <Routes>
+        <Route path="/" element={
+          <>
+            <Hero />
+            {/* <About />
+            <Experience />
+            <Quote />
+            <Skills />
+            <Projects />
+            <Certifications />
+            <Activities />
+            <Contact /> */}
+          </>
+        } />
+        <Route path="/about" element={<About />} />
+        <Route path="/skills" element={<Skills />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/certifications" element={<Certifications />} />
+        <Route path="/activities" element={<Activities />} />
+        <Route path="/experience" element={<Experience />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+      {showFooter && <Footer />}
     </>
-  )
+  );
+};
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
+  );
 }
 
-export default App
+export default App;
