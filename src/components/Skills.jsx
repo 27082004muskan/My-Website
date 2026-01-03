@@ -63,7 +63,7 @@ const Skills = () => {
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-6">
             <Sparkles className="w-6 h-6 text-orange-400" />
-            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-800/80 via-stone-700/80 to-orange-800/60 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-700 via-gray-600 to-orange-700 bg-clip-text text-transparent">
               Skills & Technologies
             </h2>
          

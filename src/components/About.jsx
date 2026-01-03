@@ -30,7 +30,7 @@ const About = () => {
 
           {/* Description */}
           <div className="text-center lg:text-left">
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-700/90 via-stone-600/85 to-orange-700/70 bg-clip-text text-transparent">
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-orange-700 via-gray-600 to-orange-700 bg-clip-text text-transparent">
               About Me
             </h2>
             <div className="text-lg text-gray-600 space-y-4 leading-relaxed">
