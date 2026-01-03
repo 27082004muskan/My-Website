@@ -4,8 +4,8 @@ import ESG from "../assets/Esg.gif";
 import Road from "../assets/road.gif";
 import Hotel from "../assets/Hotel.gif";
 import Churn from "../assets/Churn.gif";
-import vora from '../assets/vora.png';
-import VC from '../assets/VC.png';
+import vora from '../assets/vor.jpeg';
+// import VC from '../assets/VC.png';
 import Vitta from '../assets/Vitta.png';
 
 
@@ -27,8 +27,8 @@ const Projects = () => {
       description:
         "A fintech platform for ESG investing with interactive investment simulator, real-time data fetching, AI-powered fund recommendations, and impact tracking.",
       tech: ["React", "Node.js", "MongoDB", "Express.js"],
-      image: Vitta,
-      liveUrl: "#",
+      image: ESG,
+      liveUrl: "https://green-vest-esg-mutual-funds.vercel.app/",
       githubUrl:
         "https://github.com/27082004muskan/GreenVest---ESG-Mutual-Funds",
          duration: "Jan 2025-Nov 2025"
@@ -38,7 +38,7 @@ const Projects = () => {
       description:
         "A comprehensive Learning Management System with course creation, student enrollment, progress tracking, and interactive learning modules.",
       tech: ["MongoDB", "Express.js", "React", "Node.js"],
-      image: VC,
+      image: Portal,
       liveUrl: "https://lms-platform-mern-stack.onrender.com/",
       githubUrl: "https://github.com/27082004muskan/lms-platform",
    
