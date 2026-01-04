@@ -10,7 +10,7 @@ const Skills = () => {
     {
       title: "MERN Stack Development",
       icon: Atom,
-      color: "#10b981", // emerald green
+      color: "#10b981",
       skills: [
         { name: "MongoDB", level: 80, Icon: Database, color: "#FAF9F6" },
         { name: "Express.js", level: 85, Icon: Server, color: "#68a063" },
@@ -26,7 +26,7 @@ const Skills = () => {
     {
       title: "Data Analytics & Visualization",
       icon: Brain,
-      color: "#3b82f6", // blue
+      color: "#3b82f6",
       skills: [
         { name: "Excel", level: 85, Icon: FileSpreadsheet, color: "#217346" },
         { name: "Power BI", level: 80, Icon: BarChart, color: "#f2c811" },
@@ -43,7 +43,7 @@ const Skills = () => {
     {
       title: "Programming Languages",
       icon: Code,
-      color: "#f59e0b", // orange
+      color: "#f59e0b",
       skills: [
         { name: "Java", level: 75, Icon: Coffee, color: "#f89820" },
         { name: "Python", level: 88, Icon: Code, color: "#3776ab" },
@@ -56,33 +56,32 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="py-25 bg-gradient-to-br from-gray-50 via-slate-50 to-gray-200"
+      className="py-16 sm:py-25 bg-gradient-to-br from-gray-50 via-slate-50 to-gray-200"
     >
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-14 sm:mb-16">
           <div className="flex items-center justify-center gap-3 mb-6">
-            <Sparkles className="w-6 h-6 text-orange-400" />
-            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-700 via-gray-600 to-orange-700 bg-clip-text text-transparent">
+            <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-orange-400" />
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-700 via-gray-600 to-orange-700 bg-clip-text text-transparent">
               Skills & Technologies
             </h2>
-         
+            <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-orange-400" />
           </div>
-      
         </div>
 
         {/* Categories */}
-        <div className="space-y-10">
+        <div className="space-y-8 sm:space-y-10">
           {skillCategories.map((category, catIndex) => {
             const CategoryIcon = category.icon;
 
             return (
               <div
                 key={catIndex}
-                className="bg-gray-900/80 border border-gray-800/50 backdrop-blur-sm rounded-2xl p-8 hover:border-gray-500/30 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/10"
+                className="bg-gray-800/90 border border-gray-800/50 backdrop-blur-md rounded-2xl p-6 sm:p-8 hover:border-gray-500/30 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/10"
               >
                 {/* Category header */}
-                <div className="flex items-center gap-4 mb-8 pb-6 border-b border-gray-800">
+                <div className="flex items-center gap-4 mb-8 sm:mb-8 pb-6 border-b border-gray-800">
                   <div
                     className="p-3 rounded-xl shadow-lg"
                     style={{ 
@@ -100,43 +99,28 @@ const Skills = () => {
                   </h3>
                 </div>
 
-                {/* Skills grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {/* MOBILE: Simple name boxes ONLY, Desktop: unchanged skill bars */}
+                <div className="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
                   {category.skills.map((skill, index) => {
                     const SkillIcon = skill.Icon;
                     return (
                       <div
                         key={index}
-                        className="group bg-gray-400/50 border border-gray-700/50 rounded-xl p-6 hover:bg-gray-700/70 hover:border-gray-400/30 transition-all duration-300 cursor-pointer"
+                        className="group bg-gradient-to-br from-gray-800/50 to-gray-900/50 border-2 border-gray-700/50 rounded-xl p-4 hover:from-orange-500/10 hover:to-orange-600/10 hover:border-orange-400/30 transition-all duration-300 cursor-pointer hover:scale-105 hover:shadow-lg shadow-md"
                       >
-                        <div className="flex items-center justify-between mb-4">
-                          <div className="flex items-center gap-3">
-                            <div
-                              className="p-2 rounded-lg group-hover:scale-110 transition-transform"
-                              style={{ backgroundColor: `${skill.color}20` }}
-                            >
-                              <SkillIcon
-                                className="w-5 h-5"
-                                style={{ color: skill.color }}
-                              />
-                            </div>
-                            <span className="text-lg font-semibold text-white group-hover:text-gray-100">
-                              {skill.name}
-                            </span>
-                          </div>
-                          <span className="text-sm font-bold text-gray-300 bg-gray-900/50 px-3 py-1 rounded-full">
-                            {skill.level}%
-                          </span>
-                        </div>
-                        <div className="h-2 bg-gray-700/50 rounded-full overflow-hidden group-hover:bg-gray-600/50">
+                        <div className="flex items-center gap-3">
                           <div
-                            className="h-full rounded-full transition-all duration-700 ease-out group-hover:shadow-md"
-                            style={{
-                              width: `${skill.level}%`,
-                              background: `linear-gradient(90deg, ${skill.color}, ${category.color})`,
-                              boxShadow: `0 0 10px ${skill.color}50`
-                            }}
-                          />
+                            className="p-2 rounded-lg flex-shrink-0"
+                            style={{ backgroundColor: `${skill.color}20` }}
+                          >
+                            <SkillIcon
+                              className="w-5 h-5"
+                              style={{ color: skill.color }}
+                            />
+                          </div>
+                          <span className="text-sm font-semibold text-white group-hover:text-orange-300 truncate flex-1">
+                            {skill.name}
+                          </span>
                         </div>
                       </div>
                     );

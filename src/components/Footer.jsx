@@ -1,8 +1,6 @@
-
-      import React from 'react'
+import React from 'react'
 import { Code, Linkedin, Github, Mail, Heart, ArrowUp } from 'lucide-react'
-
-
+import { Link } from 'react-router-dom'  // Add this import (if using React Router)
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -30,16 +28,16 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Quick Links */}
+          {/* Quick Links - CHANGED to Link for client-side routing */}
           <div className="text-center">
             <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
             <div className="space-y-2">
-                 <a href="/" className="block text-gray-400 hover:text-orange-600 transition-colors duration-200">Home</a>
-              <a href="/about" className="block text-gray-400 hover:text-orange-600 transition-colors duration-200">About</a>
-              <a href="/experience" className="block text-gray-400 hover:text-orange-600 transition-colors duration-200">Experience</a>
-              <a href="/skills" className="block text-gray-400 hover:text-orange-600 transition-colors duration-200">Skills</a>
-              <a href="/projects" className="block text-gray-400 hover:text-orange-600 transition-colors duration-200">Projects</a>
-              <a href="/contact" className="block text-gray-400 hover:text-orange-600 transition-colors duration-200">Contact</a>
+              <Link to="/" className="block text-gray-400 hover:text-orange-600 transition-colors duration-200">Home</Link>
+              <Link to="/about" className="block text-gray-400 hover:text-orange-600 transition-colors duration-200">About</Link>
+              <Link to="/experience" className="block text-gray-400 hover:text-orange-600 transition-colors duration-200">Experience</Link>
+              <Link to="/skills" className="block text-gray-400 hover:text-orange-600 transition-colors duration-200">Skills</Link>
+              <Link to="/projects" className="block text-gray-400 hover:text-orange-600 transition-colors duration-200">Projects</Link>
+              <Link to="/contact" className="block text-gray-400 hover:text-orange-600 transition-colors duration-200">Contact</Link>
             </div>
           </div>
 
@@ -94,7 +92,5 @@ const Footer = () => {
     </footer>
   )
 }
-
-
 
 export default Footer
