@@ -19,7 +19,7 @@ const Projects = () => {
       tech: ["React.js", "Node.js", "Express.js", "GPT API"],
       image: vora,
       liveUrl: "https://greenvora-exim-frontend.onrender.com/",
-      githubUrl: "https://github.com/27082004muskan/Gemini",
+      githubUrl: "https://github.com/27082004muskan/GreenVora-Exim",
        duration: "Dec 2025-Present"
     },
     {
