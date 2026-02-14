@@ -35,7 +35,7 @@ const About = () => {
             </h2>
             <div className="text-lg text-gray-600 space-y-4 leading-relaxed">
               <p>
-                I'm a passionate Computer Science student at KIET Group of Institution with a strong focus on 
+                I am a passionate Computer Science student at KIET Group of Institution with a strong focus on 
                 MERN-stack development and Data Analytics. Currently working as a Tech Intern at <b>The Fin Lit Project </b>, 
                 where I'm revolutionizing Fintech solutions.
               </p>
