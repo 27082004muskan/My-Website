@@ -1,29 +1,50 @@
-import React from 'react';
-import { 
-  Briefcase, Calendar, MapPin, TrendingUp, Code, 
-  Building, Star, Award
+import React, { useState } from 'react';
+import {
+  Calendar,
+  MapPin,
+  TrendingUp,
+  Building,
+  Star,
+  Award
 } from 'lucide-react';
 
 const Experience = () => {
-  const experience = {
-    id: 1,
-    title: "Full Stack Developer Intern",
-    company: "The Fin Lit Project",
-    type: "Full-time Internship",
-    duration: "Jun 2025 - Oct 2025 • 5 mos",
-    location: "Remote",
-    achievements: [
-      "Revamped MERN platform with Fin Lit Learn, Invest modules",
-      "Deployed on Hostinger + ESG screening tool + QA testing"
-    ],
-    skills: ["MERN", "UI/UX", "APIs", "Hostinger"],
-    impact: "Platform Revamp"
-  };
+  const [active, setActive] = useState(0);
+
+  const experiences = [
+    {
+      title: "Software Developer Intern",
+      company: "Greenvora Exim Pvt Ltd",
+      duration: "Nov 2025 - Present",
+      location: "Remote",
+      achievements: [
+        "Built MERN export-import platform",
+        "Integrated email for lead generation",
+        "Optimized APIs for scalability"
+      ],
+      skills: ["MERN", "API", "UI/UX"],
+      impact: "Scalable System"
+    },
+    {
+      title: "Full Stack Developer Intern",
+      company: "The Fin Lit Project",
+      duration: "Jun 2025 - Oct 2025",
+      location: "Remote",
+      achievements: [
+        "Revamped Learn & Invest modules",
+        "Deployed with ESG screening tool",
+        "Handled QA & performance testing"
+      ],
+      skills: ["MERN", "UI/UX", "Deployment"],
+      impact: "Platform Revamp"
+    }
+  ];
 
   return (
-    <section id="experience" className="py-20 bg-gradient-to-br from-gray-50 via-slate-50 to-gray-100">
-      <div className="max-w-4xl mx-auto px-4">
-        {/* Header */}
+    <section className="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-100">
+      <div className="max-w-6xl mx-auto px-4">
+
+        {/* SAME HEADING */}
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-3 mb-6">
             <Star className="w-6 h-6 text-orange-500" />
@@ -34,68 +55,84 @@ const Experience = () => {
           </div>
         </div>
 
-        {/* Single Experience Card - Full Width */}
-        <div className="max-w-3xl mx-auto">
-          <div className="bg-white/70 backdrop-blur-sm rounded-3xl shadow-2xl border border-gray-100/50 p-10 lg:p-12">
-            
-            {/* Role Header */}
-            <div className="flex items-start justify-between mb-8">
-              <div className="flex-1">
-                <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-3 leading-tight">
-                  {experience.title}
-                </h3>
-                <div className="flex items-center gap-3">
-                  <Building className="w-5 h-5 text-orange-600 flex-shrink-0" />
-                  <span className="text-lg font-semibold text-gray-800">{experience.company}</span>
+        {/* Interactive Cards */}
+        <div className="flex gap-6 h-[420px]">
+
+          {experiences.map((exp, index) => (
+            <div
+              key={index}
+              onMouseEnter={() => setActive(index)}
+              className={`relative rounded-3xl transition-all duration-500 cursor-pointer overflow-hidden
+              ${
+                active === index
+                  ? "flex-[3] bg-white shadow-2xl"
+                  : "flex-[1] bg-gray-100 opacity-70"
+              }`}
+            >
+
+              <div className="p-6 h-full flex flex-col justify-between">
+
+                {/* Top Content */}
+                <div>
+                  <h3 className="text-lg font-bold text-gray-900">
+                    {exp.title}
+                  </h3>
+
+                  <div className="flex items-center gap-2 text-sm text-gray-700 mt-1">
+                    <Building className="w-4 h-4 text-orange-500" />
+                    {exp.company}
+                  </div>
+
+                  <div className="flex flex-wrap gap-3 mt-3 text-xs text-gray-600">
+                    <span className="flex items-center gap-1">
+                      <Calendar className="w-3 h-3" />
+                      {exp.duration}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <MapPin className="w-3 h-3" />
+                      {exp.location}
+                    </span>
+                  </div>
                 </div>
+
+                {/* EXPANDED CONTENT */}
+                {active === index && (
+                  <div className="mt-6 space-y-4 animate-fadeIn">
+
+                    {/* Skills */}
+                    <div className="flex flex-wrap gap-2">
+                      {exp.skills.map((skill, i) => (
+                        <span
+                          key={i}
+                          className="px-2 py-1 text-xs bg-orange-50 text-orange-700 rounded-md border border-orange-200"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Achievements */}
+                    <div className="space-y-2">
+                      {exp.achievements.map((item, i) => (
+                        <div key={i} className="flex gap-2 text-sm text-gray-700">
+                          <div className="w-1.5 h-1.5 mt-2 bg-orange-500 rounded-full"></div>
+                          {item}
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Impact */}
+                    <span className="inline-flex items-center gap-2 px-3 py-1 text-xs bg-orange-500 text-white rounded-full">
+                      <TrendingUp className="w-3 h-3" />
+                      {exp.impact}
+                    </span>
+
+                  </div>
+                )}
               </div>
             </div>
+          ))}
 
-            {/* Metadata */}
-            <div className="flex flex-wrap gap-3 mb-8 text-sm">
-              <span className="px-4 py-2 bg-gradient-to-r from-gray-100 to-gray-50 rounded-xl font-semibold text-gray-700 border border-gray-200">
-                {experience.type}
-              </span>
-              <span className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-gray-100 to-gray-50 rounded-xl font-semibold text-gray-700 border border-gray-200">
-                <Calendar className="w-4 h-4" />
-                {experience.duration}
-              </span>
-              <span className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-gray-100 to-gray-50 rounded-xl font-semibold text-gray-700 border border-gray-200">
-                <MapPin className="w-4 h-4" />
-                {experience.location}
-              </span>
-            </div>
-
-            {/* Skills */}
-            <div className="flex flex-wrap gap-3 mb-10">
-              {experience.skills.map((skill, i) => (
-                <span
-                  key={i}
-                  className="px-4 py-2 rounded-xl text-sm font-semibold border text-gray-700 bg-gradient-to-r from-orange-50 to-gray-50 border-orange-200 hover:bg-orange-100 transition-colors cursor-default"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-
-            {/* Achievements */}
-            <div className="space-y-4 mb-8">
-              {experience.achievements.map((achievement, i) => (
-                <div key={i} className="flex items-start gap-4 text-base leading-relaxed">
-                  <div className="w-2 h-2 mt-3 bg-gradient-to-r from-orange-400 to-orange-500 rounded-full flex-shrink-0"></div>
-                  <span className="text-gray-700 font-semibold flex-1">{achievement}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Impact Badge */}
-            <div className="pt-6 border-t border-gray-100">
-              <span className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-orange-50 to-orange-100 rounded-2xl border border-orange-200 text-sm font-bold text-orange-800 shadow-md">
-                <TrendingUp className="w-4 h-4" />
-                {experience.impact}
-              </span>
-            </div>
-          </div>
         </div>
       </div>
     </section>

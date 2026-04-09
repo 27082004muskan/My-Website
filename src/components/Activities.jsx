@@ -55,7 +55,7 @@ const Activities = () => {
        { title: "Qyrus QAPI ", desc: " Hackcbs track Winner", date: "Nov", icon: Trophy, category: "Winner", color: "#06b6d4" }
     ] ,
     2026:[
-      { title: "Shadowfox virtual Internship", desc: "Virtual internship", date: "Jan", icon: Zap, category: "Internship", color: "#3b82f6" },
+      { title: "Rangoli Competition", desc: "1st Runner Up", date: "March", icon: Trophy, category: "Challenge", color: "#3b82f6" },
     ]
   };
 
