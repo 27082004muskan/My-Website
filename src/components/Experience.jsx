@@ -15,7 +15,7 @@ const Experience = () => {
     {
       title: "Software Developer Intern",
       company: "Greenvora Exim Pvt Ltd",
-      duration: "Nov 2025 - Present",
+      duration: "Nov 2025 - April 2026",
       location: "Remote",
       achievements: [
         "Built MERN export-import platform",
