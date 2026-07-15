@@ -14,6 +14,7 @@ import React_Mern from "../assets/certificates/react.pdf";
 import NodeJs from "../assets/certificates/Node.pdf";
 import Npm from "../assets/certificates/npm.pdf";
 import Express from "../assets/certificates/express.pdf";
+import PageLayout from "./PageLayout";
 
 const Certifications = () => {
   const mernCertifications = [
@@ -143,106 +144,84 @@ const Certifications = () => {
     document.body.removeChild(link);
   };
 
-  return (
-    <section id="certifications" className="py-25 bg-gradient-to-br from-gray-50 via-slate-50 to-gray-100">
-      <div className="max-w-6xl mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <Star className="w-6 h-6 text-orange-400" />
-            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-700 via-gray-600 to-orange-700 bg-clip-text text-transparent">
-              Certifications
-            </h2>
-            <Award className="w-6 h-6 text-orange-400" />
-          </div>
-          {/* <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Verified achievements from industry leaders and learning platforms.
-          </p> */}
-        </div>
+  const CertCard = ({ cert, type }) => {
+    const Icon = type === 'web' ? Code : BarChart3;
 
-        {/* Web Development Section */}
-        <div className="mb-16">
-          <div className="flex items-center gap-4 mb-8">
-            <div className="p-3 rounded-xl bg-gradient-to-r from-gray-800/80 to-orange-800/60">
-              <Code className="w-6 h-6 text-orange-700" />
+    return (
+      <div
+        className="group cursor-pointer rounded-2xl border border-white/10 bg-[#11151c] p-6 transition duration-300 hover:border-orange-400/30 hover:bg-white/10"
+        onClick={() => handleDownload(cert)}
+      >
+        <div className="mb-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div
+              className="rounded-lg p-2"
+              style={{ backgroundColor: `${cert.color}20` }}
+            >
+              <Icon className="h-5 w-5" style={{ color: cert.color }} />
             </div>
-            <h3 className="text-2xl font-bold text-orange-700">Web Development</h3>
+            <div>
+              <h4 className="text-lg font-semibold text-white group-hover:text-orange-300">
+                {cert.title}
+              </h4>
+              <p className="text-sm text-gray-400">{cert.issuer}</p>
+            </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {mernCertifications.map((cert, index) => (
-              <div
-                key={index}
-                className="group bg-gray-900/80 border border-gray-800/50 rounded-xl p-6 hover:bg-gray-200 hover:border-orange-500/30 transition-all duration-300 cursor-pointer"
-                onClick={() => handleDownload(cert)}
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <div
-                      className="p-2 rounded-lg"
-                      style={{ backgroundColor: `${cert.color}20` }}
-                    >
-                      <Code className="w-5 h-5" style={{ color: cert.color }} />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-white text-lg group-hover:text-orange-800 ">
-                        {cert.title}
-                      </h4>
-                      <p className="text-sm text-gray-400">{cert.issuer}</p>
-                    </div>
-                  </div>
-                  <Download className="w-5 h-5 text-gray-500 group-hover:text-orange-400 transition-colors" />
-                </div>
-                <div className="flex items-center gap-2 text-sm text-gray-500">
-                  <Calendar className="w-4 h-4" />
-                  <span>{cert.date}</span>
-                </div>
-              </div>
-            ))}
-          </div>
+          <Download className="h-5 w-5 text-gray-500 transition-colors group-hover:text-orange-400" />
         </div>
-
-        {/* Data Analytics Section */}
-        <div>
-          <div className="flex items-center gap-4 mb-8">
-            <div className="p-3 rounded-xl bg-gradient-to-r from-gray-800/80 to-orange-800/60">
-              <BarChart3 className="w-6 h-6 text-orange-700" />
-            </div>
-            <h3 className="text-2xl font-bold text-orange-700">Data Analytics</h3>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {dataCertifications.map((cert, index) => (
-              <div
-                key={index}
-                className="group bg-gray-900/80 border border-gray-800/50 rounded-xl p-6 hover:bg-gray-200 hover:border-orange-500/30 transition-all duration-300 cursor-pointer"
-                onClick={() => handleDownload(cert)}
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <div
-                      className="p-2 rounded-lg"
-                      style={{ backgroundColor: `${cert.color}20` }}
-                    >
-                      <BarChart3 className="w-5 h-5" style={{ color: cert.color }} />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-white text-lg group-hover:text-orange-800 ">
-                        {cert.title}
-                      </h4>
-                      <p className="text-sm text-gray-400">{cert.issuer}</p>
-                    </div>
-                  </div>
-                  <Download className="w-5 h-5 text-gray-500 group-hover:text-orange-400 transition-colors" />
-                </div>
-                <div className="flex items-center gap-2 text-sm text-gray-500">
-                  <Calendar className="w-4 h-4" />
-                  <span>{cert.date}</span>
-                </div>
-              </div>
-            ))}
-          </div>
+        <div className="flex items-center gap-2 text-sm text-gray-500">
+          <Calendar className="h-4 w-4" />
+          <span>{cert.date}</span>
         </div>
       </div>
-    </section>
+    );
+  };
+
+  return (
+    <PageLayout
+      id="certifications"
+      badge="Verified Achievements"
+      badgeIcon={Award}
+      label="Certifications"
+      title="Industry-recognized credentials and learning milestones"
+      description="Certifications from Microsoft, LinkedIn Learning, Deloitte, TATA, and more — covering web development and data analytics."
+    >
+      <div className="mb-16">
+        <div className="mb-8 flex items-center gap-4">
+          <div className="rounded-xl bg-orange-500/15 p-3 text-orange-300">
+            <Code className="h-6 w-6" />
+          </div>
+          <h3 className="text-2xl font-semibold text-white">Web Development</h3>
+        </div>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {mernCertifications.map((cert, index) => (
+            <CertCard key={index} cert={cert} type="web" />
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <div className="mb-8 flex items-center gap-4">
+          <div className="rounded-xl bg-blue-500/15 p-3 text-blue-300">
+            <BarChart3 className="h-6 w-6" />
+          </div>
+          <h3 className="text-2xl font-semibold text-white">Data Analytics</h3>
+        </div>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {dataCertifications.map((cert, index) => (
+            <CertCard key={index} cert={cert} type="data" />
+          ))}
+        </div>
+      </div>
+
+      <div className="mt-16">
+        <div className="inline-flex items-center gap-3 rounded-2xl border border-orange-500/20 bg-orange-500/10 px-10 py-6 backdrop-blur-sm">
+          <Star className="h-5 w-5 text-orange-400" />
+          <span className="text-lg font-semibold text-gray-200">Continuously upskilling through industry programs</span>
+          <Star className="h-5 w-5 text-orange-400" />
+        </div>
+      </div>
+    </PageLayout>
   );
 };
 

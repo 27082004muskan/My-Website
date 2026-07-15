@@ -1,9 +1,10 @@
-import React from 'react';
-import { 
-  Atom, Server, Code, Database, Braces, Wind, Table2, Flame, BarChart, 
-  Sparkles, Star, Globe, Palette, FileSpreadsheet, TrendingUp,
+import React from "react";
+import {
+  Atom, Server, Code, Database, Braces, Wind, Table2, Flame, BarChart,
+  Sparkles, Globe, Palette, FileSpreadsheet, TrendingUp,
   Activity, Coffee, Brain, Terminal
-} from 'lucide-react';
+} from "lucide-react";
+import PageLayout from "./PageLayout";
 
 const Skills = () => {
   const skillCategories = [
@@ -54,93 +55,80 @@ const Skills = () => {
   ];
 
   return (
-    <section
+    <PageLayout
       id="skills"
-      className="py-16 sm:py-25 bg-gradient-to-br from-gray-50 via-slate-50 to-gray-200"
+      badge="Technical Expertise"
+      badgeIcon={Sparkles}
+      label="Skills & Technologies"
+      title="Tools and technologies I use to build and analyze"
+      description="From full stack web development to data analytics — a toolkit built through projects, internships, and continuous learning."
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-14 sm:mb-16">
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-orange-400" />
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-700 via-gray-600 to-orange-700 bg-clip-text text-transparent">
-              Skills & Technologies
-            </h2>
-            <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-orange-400" />
-          </div>
-        </div>
+      <div className="space-y-8 sm:space-y-10">
+        {skillCategories.map((category, catIndex) => {
+          const CategoryIcon = category.icon;
 
-        {/* Categories */}
-        <div className="space-y-8 sm:space-y-10">
-          {skillCategories.map((category, catIndex) => {
-            const CategoryIcon = category.icon;
-
-            return (
-              <div
-                key={catIndex}
-                className="bg-gray-800/90 border border-gray-800/50 backdrop-blur-md rounded-2xl p-6 sm:p-8 hover:border-gray-500/30 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/10"
-              >
-                {/* Category header */}
-                <div className="flex items-center gap-4 mb-8 sm:mb-8 pb-6 border-b border-gray-800">
-                  <div
-                    className="p-3 rounded-xl shadow-lg"
-                    style={{ 
-                      backgroundColor: `${category.color}20`,
-                      boxShadow: `0 0 20px ${category.color}40`
-                    }}
-                  >
-                    <CategoryIcon
-                      className="w-6 h-6"
-                      style={{ color: category.color }}
-                    />
-                  </div>
-                  <h3 className="text-2xl font-bold text-white">
-                    {category.title}
-                  </h3>
+          return (
+            <div
+              key={catIndex}
+              className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur-xl transition duration-300 hover:border-orange-400/20 sm:p-8"
+            >
+              <div className="mb-8 flex items-center gap-4 border-b border-white/10 pb-6">
+                <div
+                  className="rounded-xl p-3 shadow-lg"
+                  style={{
+                    backgroundColor: `${category.color}20`,
+                    boxShadow: `0 0 20px ${category.color}30`
+                  }}
+                >
+                  <CategoryIcon
+                    className="h-6 w-6"
+                    style={{ color: category.color }}
+                  />
                 </div>
-
-                {/* MOBILE: Simple name boxes ONLY, Desktop: unchanged skill bars */}
-                <div className="grid grid-cols-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
-                  {category.skills.map((skill, index) => {
-                    const SkillIcon = skill.Icon;
-                    return (
-                      <div
-                        key={index}
-                        className="group bg-gradient-to-br from-gray-800/50 to-gray-900/50 border-2 border-gray-700/50 rounded-xl p-4 hover:from-orange-500/10 hover:to-orange-600/10 hover:border-orange-400/30 transition-all duration-300 cursor-pointer hover:scale-105 hover:shadow-lg shadow-md"
-                      >
-                        <div className="flex items-center gap-3">
-                          <div
-                            className="p-2 rounded-lg flex-shrink-0"
-                            style={{ backgroundColor: `${skill.color}20` }}
-                          >
-                            <SkillIcon
-                              className="w-5 h-5"
-                              style={{ color: skill.color }}
-                            />
-                          </div>
-                          <span className="text-sm font-semibold text-white group-hover:text-orange-300 truncate flex-1">
-                            {skill.name}
-                          </span>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
+                <h3 className="text-2xl font-semibold text-white">
+                  {category.title}
+                </h3>
               </div>
-            );
-          })}
-        </div>
 
-        {/* Footer */}
-        <div className="text-center mt-16">
-          <div className="inline-flex items-center gap-3 bg-gradient-to-r from-orange-500/10 to-orange-600/10 backdrop-blur-sm border border-orange-500/20 rounded-2xl px-10 py-6">
-            <Sparkles className="w-5 h-5 text-orange-400" />
-            <span className="text-gray-700 font-semibold text-lg">Always Learning New Technologies</span>
-            <Sparkles className="w-5 h-5 text-orange-400" />
-          </div>
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 sm:gap-6">
+                {category.skills.map((skill, index) => {
+                  const SkillIcon = skill.Icon;
+                  return (
+                    <div
+                      key={index}
+                      className="group cursor-pointer rounded-2xl border border-white/10 bg-[#11151c] p-4 shadow-md transition duration-300 hover:scale-105 hover:border-orange-400/30 hover:bg-white/10 hover:shadow-lg"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div
+                          className="flex-shrink-0 rounded-lg p-2"
+                          style={{ backgroundColor: `${skill.color}20` }}
+                        >
+                          <SkillIcon
+                            className="h-5 w-5"
+                            style={{ color: skill.color }}
+                          />
+                        </div>
+                        <span className="flex-1 truncate text-sm font-semibold text-white group-hover:text-orange-300">
+                          {skill.name}
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="mt-16">
+        <div className="inline-flex items-center gap-3 rounded-2xl border border-orange-500/20 bg-orange-500/10 px-10 py-6 backdrop-blur-sm">
+          <Sparkles className="h-5 w-5 text-orange-400" />
+          <span className="text-lg font-semibold text-gray-200">Always Learning New Technologies</span>
+          <Sparkles className="h-5 w-5 text-orange-400" />
         </div>
       </div>
-    </section>
+    </PageLayout>
   );
 };
 

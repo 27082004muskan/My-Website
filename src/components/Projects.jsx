@@ -1,17 +1,14 @@
-import { ExternalLink, Github } from "lucide-react";
-import Portal from '../assets/lms.gif';
+import { ExternalLink, Github, FolderKanban } from "lucide-react";
+import Portal from "../assets/lms.gif";
 import ESG from "../assets/Esg.gif";
 import Road from "../assets/road.gif";
 import Hotel from "../assets/Hotel.gif";
 import Churn from "../assets/Churn.gif";
-import vora from '../assets/vor.jpeg';
-// import VC from '../assets/VC.png';
-import Vitta from '../assets/Vitta.png';
-
+import vora from "../assets/vor.jpeg";
+import PageLayout from "./PageLayout";
 
 const Projects = () => {
   const mernProjects = [
-
     {
       title: "GreenVora Exim-Green Export Import",
       description:
@@ -20,7 +17,7 @@ const Projects = () => {
       image: vora,
       liveUrl: "https://greenvora-exim-frontend.onrender.com/",
       githubUrl: "https://github.com/27082004muskan/GreenVora-Exim",
-       duration: "Dec 2025-Present"
+      duration: "Dec 2025-Present",
     },
     {
       title: "VittaVardhan - ESG Mutual Fund Investment",
@@ -31,9 +28,9 @@ const Projects = () => {
       liveUrl: "https://green-vest-esg-mutual-funds.vercel.app/",
       githubUrl:
         "https://github.com/27082004muskan/GreenVest---ESG-Mutual-Funds",
-         duration: "Jan 2025-Nov 2025"
+      duration: "Jan 2025-Nov 2025",
     },
-        {
+    {
       title: "LMS Platform",
       description:
         "A comprehensive Learning Management System with course creation, student enrollment, progress tracking, and interactive learning modules.",
@@ -41,8 +38,7 @@ const Projects = () => {
       image: Portal,
       liveUrl: "https://lms-platform-mern-stack.onrender.com/",
       githubUrl: "https://github.com/27082004muskan/lms-platform",
-   
-       duration: "Aug 2025-Oct 2025"
+      duration: "Aug 2025-Oct 2025",
     },
   ];
 
@@ -79,145 +75,97 @@ const Projects = () => {
     },
   ];
 
-  // Shared card styling class
   const cardClass =
-    "group bg-gray-100 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200";
+    "group rounded-[1.5rem] border border-white/10 bg-white/5 shadow-2xl backdrop-blur-xl transition duration-300 hover:-translate-y-2 hover:border-orange-400/20 hover:shadow-orange-500/10";
 
-  return (
-    <section id="projects" className="py-25 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-8 sm:px-8 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-500 via-gray-500 to-orange-500 bg-clip-text text-transparent">
-            Featured Projects
-          </h2>
-          {/* <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            A showcase of innovative solutions spanning MERN Stack development
-            and Data Analytics
-          </p> */}
+  const ProjectCard = ({ project }) => (
+    <div className={cardClass}>
+      <div className="relative flex h-48 items-center justify-center overflow-hidden rounded-t-[1.5rem]">
+        <img src={project.image} alt={project.title} className="h-full w-full object-cover" />
+        {project.duration && (
+          <div className="absolute bottom-3 left-3 rounded-full border border-white/10 bg-black/60 px-3 py-1 text-xs font-medium text-orange-300 backdrop-blur-sm">
+            {project.duration}
+          </div>
+        )}
+      </div>
+
+      <div className="p-6">
+        <h3 className="mb-3 text-xl font-semibold text-gray-200 transition-colors duration-200 group-hover:text-orange-300">
+          {project.title}
+        </h3>
+        <p className="mb-4 text-sm leading-relaxed text-gray-400">
+          {project.description}
+        </p>
+
+        <div className="mb-6 flex flex-wrap gap-2">
+          {project.tech.map((tech, techIndex) => (
+            <span
+              key={techIndex}
+              className="rounded-full border border-white/10 bg-[#121821] px-3 py-1 text-xs font-medium text-orange-300"
+            >
+              {tech}
+            </span>
+          ))}
         </div>
 
-        {/* MERN Stack Projects - Grid Layout */}
-        <div className="mb-20">
-          <h3 className="text-3xl font-bold underline text-center mb-8 text-gray-500">
-            MERN Stack Projects
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {mernProjects.map((project, index) => (
-              <div key={index} className={cardClass}>
-                {/* Project Image */}
-                <div className="h-48 rounded-t-2xl flex items-center justify-center relative overflow-hidden">
-                  <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
-                  {/* {project.status && (
-                    <div className="absolute top-3 right-3 bg-pink-500 text-white px-3 py-1 rounded-full text-xs font-bold">
-                      {project.status} */}
-                       {project.duration && (
-                    <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm text-orange-700 px-3 py-1 rounded text-xs font-medium">
-                      {project.duration}
-                    </div>
-                  )}
-                </div>
+        <div className="flex space-x-4">
+          {project.liveUrl !== "#" && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2 text-gray-300 transition-colors duration-200 hover:text-orange-300"
+            >
+              <ExternalLink className="h-4 w-4" />
+              <span className="text-sm font-medium">Live Demo</span>
+            </a>
+          )}
 
-                {/* Project Content */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-600 mb-3 group-hover:text-orange-600 transition-colors duration-200">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-600 mb-4 text-sm leading-relaxed">
-                    {project.description}
-                  </p>
-
-                  {/* Tech Stack */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tech.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="px-3 py-1 bg-gray-100 text-orange-700 rounded-full text-xs font-medium border border-gray-200"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Action Buttons */}
-                  <div className="flex space-x-4">
-                  
-                    <a
-                      href={project.githubUrl}
-                      className="flex items-center space-x-2 text-orange-700 hover:text-orange-700 transition-colors duration-200"
-                    >
-                      <Github className="w-4 h-4" />
-                      <span className="text-sm font-medium">GitHub</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Data Analytics Projects - Grid Layout */}
-        <div>
-          <h3 className="text-3xl font-bold text-center mb-8 text-gray-500 underline">
-            Data Analytics Projects
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {dataAnalyticsProjects.map((project, index) => (
-              <div key={index} className={cardClass}>
-                {/* Project Image */}
-                <div className="h-48 rounded-t-2xl flex items-center justify-center relative overflow-hidden">
-                  <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
-                  {project.duration && (
-                    <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm text-orange-700 px-3 py-1 rounded text-xs font-medium">
-                      {project.duration}
-                    </div>
-                  )}
-                </div>
-
-                {/* Project Content */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-600 mb-3 group-hover:text-orange-600 transition-colors duration-200">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-600 mb-4 text-sm leading-relaxed">
-                    {project.description}
-                  </p>
-
-                  {/* Tech Stack */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tech.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="px-3 py-1 bg-purple-50 text-orange-700 rounded-full text-xs font-medium border border-purple-200"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Action Buttons */}
-                  <div className="flex space-x-4">
-                    {/* <a
-                      href={project.liveUrl}
-                      className="flex items-center space-x-2 text-purple-600 hover:text-purple-700 transition-colors duration-200"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      <span className="text-sm font-medium">Live Demo</span>
-                    </a> */}
-                    <a
-                      href={project.githubUrl}
-                      className="flex items-center space-x-2 text-orange-700 hover:text-orange-700 transition-colors duration-200"
-                    >
-                      <Github className="w-4 h-4" />
-                      <span className="text-sm font-medium">GitHub</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center space-x-2 text-orange-300 transition-colors duration-200 hover:text-orange-200"
+          >
+            <Github className="h-4 w-4" />
+            <span className="text-sm font-medium">GitHub</span>
+          </a>
         </div>
       </div>
-    </section>
+    </div>
+  );
+
+  return (
+    <PageLayout
+      id="projects"
+      badge="Portfolio Showcase"
+      badgeIcon={FolderKanban}
+      label="Featured Projects"
+      title="Real-world products built with MERN and data analytics"
+      description="A collection of full stack applications and data-driven projects — from fintech platforms to interactive dashboards."
+    >
+      <div className="mb-20">
+        <h3 className="mb-8 text-2xl font-semibold text-white">
+          MERN Stack Projects
+        </h3>
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {mernProjects.map((project, index) => (
+            <ProjectCard key={index} project={project} />
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <h3 className="mb-8 text-2xl font-semibold text-white">
+          Data Analytics Projects
+        </h3>
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {dataAnalyticsProjects.map((project, index) => (
+            <ProjectCard key={index} project={project} />
+          ))}
+        </div>
+      </div>
+    </PageLayout>
   );
 };
 

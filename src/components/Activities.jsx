@@ -1,19 +1,20 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { 
-  Calendar, 
-  ChevronLeft, 
-  ChevronRight, 
-  Star, 
-  Target, 
-  Award, 
-  Trophy, 
-  Users, 
-  Code, 
-  BarChart3, 
-  Zap, 
+import {
+  Calendar,
+  ChevronLeft,
+  ChevronRight,
+  Star,
+  Target,
+  Award,
+  Trophy,
+  Users,
+  Code,
+  BarChart3,
+  Zap,
   Globe,
   Briefcase
 } from 'lucide-react';
+import PageLayout from './PageLayout';
 
 const Activities = () => {
   const [selectedYear, setSelectedYear] = useState('2025');
@@ -47,14 +48,12 @@ const Activities = () => {
     2025: [
       { title: "IIIT HackFinance", desc: "Top 30 Fintech Hackathon", date: "Jan", icon: Trophy, category: "Achievement", color: "#f59e0b" },
       { title: "MarQing Minds Competition", desc: "MDI Gurgaon case study", date: "Feb 13", icon: BarChart3, category: "Competition", color: "#8b5cf6" },
-  
       { title: "Unstop Talent Park", desc: "Cleared 2 rounds", date: "May 30", icon: Award, category: "Achievement", color: "#10b981" },
-     
       { title: "GFG 160 Days Code", desc: "Coding challenge", date: "Jul", icon: Target, category: "Challenge", color: "#10b981" },
-      { title: "HackCbs 8.0 ", desc: "India largest run Hackathon", date: "Nov", icon: Globe, category: "Hackathon", color: "#06b6d4" } ,
-       { title: "Qyrus QAPI ", desc: " Hackcbs track Winner", date: "Nov", icon: Trophy, category: "Winner", color: "#06b6d4" }
-    ] ,
-    2026:[
+      { title: "HackCbs 8.0 ", desc: "India largest run Hackathon", date: "Nov", icon: Globe, category: "Hackathon", color: "#06b6d4" },
+      { title: "Qyrus QAPI ", desc: " Hackcbs track Winner", date: "Nov", icon: Trophy, category: "Winner", color: "#06b6d4" }
+    ],
+    2026: [
       { title: "Rangoli Competition", desc: "1st Runner Up", date: "March", icon: Trophy, category: "Challenge", color: "#3b82f6" },
     ]
   };
@@ -64,10 +63,10 @@ const Activities = () => {
   const scrollHorizontal = (direction) => {
     const container = scrollRef.current;
     if (!container) return;
-    
-    const cardWidth = 340; // card + gap
+
+    const cardWidth = 340;
     const scrollAmount = direction === 'right' ? cardWidth : -cardWidth;
-    
+
     container.scrollBy({
       left: scrollAmount,
       behavior: 'smooth'
@@ -85,7 +84,7 @@ const Activities = () => {
     };
 
     container.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check
+    handleScroll();
     return () => container.removeEventListener('scroll', handleScroll);
   }, [selectedYear]);
 
@@ -93,123 +92,110 @@ const Activities = () => {
     scrollRef.current?.scrollTo({ left: 0, behavior: 'smooth' });
   }, [selectedYear]);
 
-  const ActivityCard = ({ activity }) => (
-    <div className="group flex-none w-[320px] h-64 bg-white/80 backdrop-blur-xl rounded-2xl p-6 border border-white/50 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 cursor-pointer hover:bg-white">
-      <div 
-        className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-500"
-        style={{ backgroundColor: activity.color + '20' }}
-      />
-      <div className="relative z-10 h-full flex flex-col justify-between">
+  const ActivityCard = ({ activity }) => {
+    const Icon = activity.icon;
+
+    return (
+      <div className="group relative flex h-64 w-[320px] flex-none cursor-pointer flex-col justify-between rounded-[1.5rem] border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur-xl transition duration-500 hover:-translate-y-2 hover:border-orange-400/30">
         <div>
-          <div className="flex items-center justify-between mb-4">
-            <div className="p-3 rounded-xl bg-gradient-to-r from-gray-900/10 to-white/20 group-hover:scale-110 transition-all duration-300">
-              <activity.icon className="w-6 h-6" style={{ color: activity.color }} />
+          <div className="mb-4 flex items-center justify-between">
+            <div
+              className="rounded-xl p-3 transition duration-300 group-hover:scale-110"
+              style={{ backgroundColor: `${activity.color}20` }}
+            >
+              <Icon className="h-6 w-6" style={{ color: activity.color }} />
             </div>
-            <span className="px-3 py-1 rounded-full text-xs font-bold text-white bg-gradient-to-r from-gray-900 to-gray-800 group-hover:from-orange-600 group-hover:to-orange-500 transition-all duration-300">
+            <span className="rounded-full border border-white/10 bg-[#11151c] px-3 py-1 text-xs font-medium text-gray-300 group-hover:border-orange-400/30 group-hover:text-orange-200">
               {activity.category}
             </span>
           </div>
-          <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-gray-800 transition-colors">{activity.title}</h3>
-          <p className="text-sm text-gray-600 leading-relaxed">{activity.desc}</p>
+          <h3 className="mb-2 text-xl font-semibold text-white group-hover:text-orange-300">{activity.title}</h3>
+          <p className="text-sm leading-relaxed text-gray-400">{activity.desc}</p>
         </div>
-        <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+        <div className="flex items-center justify-between border-t border-white/10 pt-4">
           <div className="flex items-center gap-2 text-sm text-gray-500">
-            <Calendar className="w-4 h-4" />
+            <Calendar className="h-4 w-4" />
             <span className="font-medium">{activity.date}</span>
           </div>
-          <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-gray-700 group-hover:translate-x-1 transition-all duration-300" />
+          <ChevronRight className="h-5 w-5 text-gray-500 transition duration-300 group-hover:translate-x-1 group-hover:text-orange-300" />
         </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   return (
-    <section id="activities" className="py-24 bg-gradient-to-br from-gray-50 via-slate-50 to-gray-100">
-      <div className="max-w-6xl mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-20">
-          <div className="flex items-center justify-center gap-3 mb-8">
-            <Star className="w-7 h-7 text-orange-500" />
-            <h2 className="text-4xl md:text-5xl font-black bg-gradient-to-r from-orange-700 via-gray-800 to-orange-700 bg-clip-text text-transparent">
-              Co-Curricular Activities
-            </h2>
-            <Award className="w-7 h-7 text-orange-500" />
-          </div>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">Journey of achievements, competitions, and skill development (2022 - Present)</p>
-        </div>
+    <PageLayout
+      id="activities"
+      badge="Beyond the classroom"
+      badgeIcon={Star}
+      label="Co-Curricular Activities"
+      title="Hackathons, competitions, and growth milestones"
+      description="A journey of achievements, competitions, and skill development from 2022 to present."
+    >
+      <div className="mb-12 flex flex-wrap justify-start gap-3">
+        {years.map((year) => (
+          <button
+            key={year}
+            onClick={() => setSelectedYear(year)}
+            className={`rounded-full px-6 py-3 text-sm font-semibold transition duration-300 ${
+              selectedYear === year
+                ? 'bg-orange-500 text-white shadow-lg shadow-orange-500/25'
+                : 'border border-white/10 bg-white/5 text-gray-300 hover:border-orange-400/30 hover:bg-white/10'
+            }`}
+          >
+            {year}
+          </button>
+        ))}
+      </div>
 
-        {/* Year Selector */}
-        <div className="flex flex-wrap gap-3 justify-center mb-16">
-          {years.map((year) => (
-            <button
-              key={year}
-              onClick={() => setSelectedYear(year)}
-              className={`px-6 py-3 rounded-xl font-bold text-sm transition-all duration-300 border-2 ${
-                selectedYear === year
-                  ? 'bg-gradient-to-r from-orange-600 to-orange-500 text-white shadow-lg shadow-orange-500/25 scale-105'
-                  : 'bg-white/50 border-gray-200 hover:border-orange-300 hover:bg-white hover:shadow-md text-gray-800'
-              }`}
-            >
-              {year}
-            </button>
+      <div className="relative">
+        <div
+          ref={scrollRef}
+          className="scrollbar-hide flex snap-x snap-mandatory items-start gap-6 overflow-x-auto pb-8"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
+          {activitiesByYear[selectedYear].map((activity, index) => (
+            <ActivityCard key={`${selectedYear}-${index}`} activity={activity} />
           ))}
         </div>
 
-        {/* Activities Grid */}
-        <div className="relative">
-          <div
-            ref={scrollRef}
-            className="flex items-start gap-6 overflow-x-auto scrollbar-hide pb-8 snap-x snap-mandatory"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-          >
-            {activitiesByYear[selectedYear].map((activity, index) => (
-              <ActivityCard key={`${selectedYear}-${index}`} activity={activity} />
-            ))}
-          </div>
+        <button
+          onClick={() => scrollHorizontal('left')}
+          className={`absolute left-0 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-[#11151c]/90 text-white shadow-lg backdrop-blur-xl transition duration-300 hover:border-orange-400/40 hover:bg-orange-500 ${
+            !canScrollLeft ? 'cursor-not-allowed opacity-30' : ''
+          }`}
+          disabled={!canScrollLeft}
+        >
+          <ChevronLeft className="h-6 w-6" />
+        </button>
 
-          {/* Scroll Buttons */}
-          <button
-            onClick={() => scrollHorizontal('left')}
-            className={`absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-2xl bg-gradient-to-r from-orange-600 to-orange-500 text-white shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 border border-white/20 backdrop-blur-xl ${
-              !canScrollLeft ? 'opacity-30 cursor-not-allowed hover:scale-100' : ''
-            }`}
-            disabled={!canScrollLeft}
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
+        <button
+          onClick={() => scrollHorizontal('right')}
+          className={`absolute right-0 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-[#11151c]/90 text-white shadow-lg backdrop-blur-xl transition duration-300 hover:border-orange-400/40 hover:bg-orange-500 ${
+            !canScrollRight ? 'cursor-not-allowed opacity-30' : ''
+          }`}
+          disabled={!canScrollRight}
+        >
+          <ChevronRight className="h-6 w-6" />
+        </button>
+      </div>
 
-          <button
-            onClick={() => scrollHorizontal('right')}
-            className={`absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-2xl bg-gradient-to-r from-orange-600 to-orange-500 text-white shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 border border-white/20 backdrop-blur-xl ${
-              !canScrollRight ? 'opacity-30 cursor-not-allowed hover:scale-100' : ''
-            }`}
-            disabled={!canScrollRight}
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
-        </div>
-
-        {/* Year Summary */}
-        <div className="text-center mt-16 pt-12 border-t border-gray-200">
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <Briefcase className="w-8 h-8 text-orange-500" />
-            <span className="text-2xl font-bold text-gray-800">
-              {activitiesByYear[selectedYear].length} Activities in {selectedYear}
-            </span>
-            <Calendar className="w-8 h-8 text-orange-500" />
-          </div>
+      <div className="mt-16 border-t border-white/10 pt-12">
+        <div className="flex items-center gap-4">
+          <Briefcase className="h-6 w-6 text-orange-400" />
+          <span className="text-xl font-semibold text-white">
+            {activitiesByYear[selectedYear].length} Activities in {selectedYear}
+          </span>
+          <Calendar className="h-6 w-6 text-orange-400" />
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         .scrollbar-hide::-webkit-scrollbar {
           display: none;
         }
-        .snap-x {
-          scroll-snap-type: x mandatory;
-        }
       `}</style>
-    </section>
+    </PageLayout>
   );
 };
 
