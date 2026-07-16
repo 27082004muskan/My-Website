@@ -46,10 +46,10 @@ const Hero = () => {
   );
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#0b0d12] text-white">
+    <section className="relative min-h-screen overflow-hidden bg-[#070b14] text-white">
       {/* Background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(249,115,22,0.16),_transparent_35%),radial-gradient(circle_at_bottom_right,_rgba(59,130,246,0.14),_transparent_30%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(139,92,246,0.18),_transparent_35%),radial-gradient(circle_at_bottom_right,_rgba(34,211,238,0.14),_transparent_30%)]" />
         <div className="absolute inset-0 opacity-[0.06] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:72px_72px]" />
       </div>
 
@@ -57,25 +57,25 @@ const Hero = () => {
         <div className="grid w-full grid-cols-1 gap-14 lg:grid-cols-2 lg:gap-10">
           {/* Left */}
           <div className="flex flex-col justify-center text-center lg:text-left">
-            {/* <div className="mb-6 inline-flex w-fit items-center gap-2 self-center rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-gray-300 backdrop-blur-md lg:self-start">
-              <Sparkles className="h-4 w-4 text-orange-400" />
+            {/* <div className="mb-6 inline-flex w-fit items-center gap-2 self-center rounded-full border border-violet-400/15 bg-violet-500/10 px-4 py-2 text-sm text-slate-300 backdrop-blur-md lg:self-start">
+              <Sparkles className="h-4 w-4 text-violet-400" />
               <span>Available for internships & freelance work</span>
             </div> */}
 
-            {/* <p className="mb-4 text-sm font-medium uppercase tracking-[0.28em] text-orange-300/80">
+            {/* <p className="mb-4 text-sm font-medium uppercase tracking-[0.28em] text-violet-300/80">
               Portfolio 2026
             </p> */}
 
             <h1 className="max-w-3xl text-4xl font-semibold leading-tight sm:text-5xl lg:text-7xl">
-              Hi, I’m <span className="text-orange-400">Muskan Gupta</span>
+              Hi, I'm <span className="text-violet-400">Muskan Gupta</span>
             </h1>
 
-            <div className="mt-4 h-12 text-xl font-medium text-gray-200 sm:text-2xl">
+            <div className="mt-4 h-12 text-xl font-medium text-slate-200 sm:text-2xl">
               <span>{typedText}</span>
-              <span className="ml-1 animate-pulse text-orange-400">|</span>
+              <span className="ml-1 animate-pulse text-cyan-400">|</span>
             </div>
 
-            <p className="mt-6 max-w-2xl text-base leading-8 text-gray-400 sm:text-lg">
+            <p className="mt-6 max-w-2xl text-base leading-8 text-slate-400 sm:text-lg">
               I build responsive, scalable, and user-focused web applications
               using React, Node.js, Express, and MongoDB, with growing interest in
               analytics-driven products and modern digital experiences.
@@ -85,7 +85,7 @@ const Hero = () => {
               <a
                 href={Resume}
                 download="Muskan-Gupta-Resume.pdf"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-orange-500 px-7 py-3.5 text-sm font-semibold text-white transition duration-300 hover:scale-[1.03] hover:bg-orange-400"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-violet-600 px-7 py-3.5 text-sm font-semibold text-white transition duration-300 hover:scale-[1.03] hover:bg-violet-500"
               >
                 <Download className="h-4 w-4" />
                 Download Resume
@@ -93,7 +93,7 @@ const Hero = () => {
 
               <a
                 href="#projects"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition duration-300 hover:scale-[1.03] hover:border-orange-400/40 hover:bg-white/10"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-violet-400/20 bg-violet-500/10 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition duration-300 hover:scale-[1.03] hover:border-cyan-400/40 hover:bg-violet-500/20"
               >
                 View Projects
                 <ArrowRight className="h-4 w-4" />
@@ -105,7 +105,7 @@ const Hero = () => {
                 href="https://www.linkedin.com/in/muskan-gupta-639065250/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full border border-white/10 bg-white/5 p-3 text-gray-300 transition duration-300 hover:-translate-y-1 hover:border-orange-400/40 hover:text-white"
+                className="rounded-full border border-violet-400/15 bg-violet-500/10 p-3 text-slate-300 transition duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:text-white"
                 aria-label="LinkedIn profile"
               >
                 <Linkedin className="h-5 w-5" />
@@ -115,7 +115,7 @@ const Hero = () => {
                 href="https://github.com/27082004muskan"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full border border-white/10 bg-white/5 p-3 text-gray-300 transition duration-300 hover:-translate-y-1 hover:border-orange-400/40 hover:text-white"
+                className="rounded-full border border-violet-400/15 bg-violet-500/10 p-3 text-slate-300 transition duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:text-white"
                 aria-label="GitHub profile"
               >
                 <Github className="h-5 w-5" />
@@ -126,50 +126,50 @@ const Hero = () => {
           {/* Right */}
           <div className="flex items-center justify-center lg:justify-end">
             <div className="relative w-full max-w-md">
-              <div className="absolute -left-6 top-10 hidden h-24 w-24 rounded-2xl border border-orange-400/20 bg-orange-400/10 blur-2xl sm:block" />
-              <div className="absolute -right-6 bottom-10 hidden h-24 w-24 rounded-2xl border border-blue-400/20 bg-blue-400/10 blur-2xl sm:block" />
+              <div className="absolute -left-6 top-10 hidden h-24 w-24 rounded-2xl border border-violet-400/20 bg-violet-400/10 blur-2xl sm:block" />
+              <div className="absolute -right-6 bottom-10 hidden h-24 w-24 rounded-2xl border border-cyan-400/20 bg-cyan-400/10 blur-2xl sm:block" />
 
-              <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur-xl">
+              <div className="relative overflow-hidden rounded-[2rem] border border-violet-400/15 bg-violet-500/5 p-6 shadow-2xl shadow-violet-950/50 backdrop-blur-xl">
                 <div className="mb-5 flex items-center justify-between">
                   <div>
-                    <p className="text-xs uppercase tracking-[0.24em] text-gray-400">
+                    <p className="text-xs uppercase tracking-[0.24em] text-slate-400">
                       Developer Snapshot
                     </p>
                     <h2 className="mt-2 text-2xl font-semibold text-white">
                       Crafting modern web experiences
                     </h2>
                   </div>
-                  <div className="rounded-2xl bg-orange-500/15 px-3 py-1 text-xs font-medium text-orange-300">
+                  <div className="rounded-2xl bg-violet-500/15 px-3 py-1 text-xs font-medium text-violet-300">
                     MERN
                   </div>
                 </div>
 
                 <div className="space-y-4">
-                  <div className="rounded-2xl border border-white/10 bg-[#11151c] p-4">
-                    <p className="text-sm text-gray-400">Core Stack</p>
+                  <div className="rounded-2xl border border-violet-400/10 bg-[#0d1528] p-4">
+                    <p className="text-sm text-slate-400">Core Stack</p>
                     <p className="mt-2 text-lg font-medium text-white">
                       React • Node.js • Express • MongoDB
                     </p>
                   </div>
 
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="rounded-2xl border border-white/10 bg-[#11151c] p-4">
-                      <p className="text-sm text-gray-400">Focus</p>
+                    <div className="rounded-2xl border border-violet-400/10 bg-[#0d1528] p-4">
+                      <p className="text-sm text-slate-400">Focus</p>
                       <p className="mt-2 font-medium text-white">
                         Full Stack Apps
                       </p>
                     </div>
 
-                    <div className="rounded-2xl border border-white/10 bg-[#11151c] p-4">
-                      <p className="text-sm text-gray-400">Interest</p>
+                    <div className="rounded-2xl border border-violet-400/10 bg-[#0d1528] p-4">
+                      <p className="text-sm text-slate-400">Interest</p>
                       <p className="mt-2 font-medium text-white">
                         Data Analytics
                       </p>
                     </div>
                   </div>
 
-                  <div className="rounded-2xl border border-white/10 bg-gradient-to-r from-orange-500/10 to-blue-500/10 p-4">
-                    <p className="text-sm text-gray-300">
+                  <div className="rounded-2xl border border-violet-400/10 bg-gradient-to-r from-violet-500/10 to-cyan-500/10 p-4">
+                    <p className="text-sm text-slate-300">
                       Building practical products with clean UI, strong backend
                       logic, and real-world usability.
                     </p>
@@ -177,8 +177,8 @@ const Hero = () => {
                 </div>
 
                 <div className="mt-6 flex items-center gap-3">
-                  <span className="h-3 w-3 rounded-full bg-green-400 animate-pulse" />
-                  <p className="text-sm text-gray-400">
+                  <span className="h-3 w-3 rounded-full bg-emerald-400 animate-pulse" />
+                  <p className="text-sm text-slate-400">
                     Open to collaboration and new opportunities
                   </p>
                 </div>

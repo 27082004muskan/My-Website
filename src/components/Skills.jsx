@@ -70,9 +70,9 @@ const Skills = () => {
           return (
             <div
               key={catIndex}
-              className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur-xl transition duration-300 hover:border-orange-400/20 sm:p-8"
+              className="rounded-[2rem] border border-violet-400/10 bg-violet-500/5 p-6 shadow-2xl backdrop-blur-xl transition duration-300 hover:border-violet-400/20 sm:p-8"
             >
-              <div className="mb-8 flex items-center gap-4 border-b border-white/10 pb-6">
+              <div className="mb-8 flex items-center gap-4 border-b border-violet-400/10 pb-6">
                 <div
                   className="rounded-xl p-3 shadow-lg"
                   style={{
@@ -96,7 +96,7 @@ const Skills = () => {
                   return (
                     <div
                       key={index}
-                      className="group cursor-pointer rounded-2xl border border-white/10 bg-[#11151c] p-4 shadow-md transition duration-300 hover:scale-105 hover:border-orange-400/30 hover:bg-white/10 hover:shadow-lg"
+                      className="group cursor-pointer rounded-2xl border border-violet-400/10 bg-[#0d1528] p-4 shadow-md transition duration-300 hover:scale-105 hover:border-violet-400/30 hover:bg-violet-500/10 hover:shadow-lg"
                     >
                       <div className="flex items-center gap-3">
                         <div
@@ -108,7 +108,7 @@ const Skills = () => {
                             style={{ color: skill.color }}
                           />
                         </div>
-                        <span className="flex-1 truncate text-sm font-semibold text-white group-hover:text-orange-300">
+                        <span className="flex-1 truncate text-sm font-semibold text-white group-hover:text-violet-300">
                           {skill.name}
                         </span>
                       </div>
@@ -122,10 +122,10 @@ const Skills = () => {
       </div>
 
       <div className="mt-16">
-        <div className="inline-flex items-center gap-3 rounded-2xl border border-orange-500/20 bg-orange-500/10 px-10 py-6 backdrop-blur-sm">
-          <Sparkles className="h-5 w-5 text-orange-400" />
-          <span className="text-lg font-semibold text-gray-200">Always Learning New Technologies</span>
-          <Sparkles className="h-5 w-5 text-orange-400" />
+        <div className="inline-flex items-center gap-3 rounded-2xl border border-violet-500/20 bg-violet-500/10 px-10 py-6 backdrop-blur-sm">
+          <Sparkles className="h-5 w-5 text-violet-400" />
+          <span className="text-lg font-semibold text-slate-200">Always Learning New Technologies</span>
+          <Sparkles className="h-5 w-5 text-violet-400" />
         </div>
       </div>
     </PageLayout>

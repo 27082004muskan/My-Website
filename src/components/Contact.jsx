@@ -106,28 +106,28 @@ const Contact = () => {
   };
 
   const inputClass = (field) =>
-    `w-full rounded-xl border bg-[#11151c] px-4 py-3 text-white placeholder-gray-500 transition duration-200 focus:outline-none focus:border-orange-400/50 ${
-      fieldErrors[field] ? 'border-red-400/60' : 'border-white/10'
+    `w-full rounded-xl border bg-[#0d1528] px-4 py-3 text-white placeholder-slate-500 transition duration-200 focus:outline-none focus:border-violet-400/50 ${
+      fieldErrors[field] ? 'border-red-400/60' : 'border-violet-400/10'
     }`;
   return (
     <PageLayout title="">
       {showSuccess && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-          <div className="relative mx-4 max-w-md transform rounded-[2rem] border border-white/10 bg-[#121821] p-8 shadow-2xl">
+          <div className="relative mx-4 max-w-md transform rounded-[2rem] border border-violet-400/10 bg-[#101828] p-8 shadow-2xl">
             <button
               onClick={closeSuccessMessage}
-              className="absolute right-4 top-4 text-gray-400 transition-colors duration-200 hover:text-white"
+              className="absolute right-4 top-4 text-slate-400 transition-colors duration-200 hover:text-white"
             >
               <X className="h-5 w-5" />
             </button>
             <div className="text-center">
-              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-400/15">
-                <CheckCircle className="h-10 w-10 text-green-400" />
+              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-emerald-400/15">
+                <CheckCircle className="h-10 w-10 text-emerald-400" />
               </div>
               <h3 className="mb-2 text-2xl font-semibold text-white">
                 Message Sent Successfully!
               </h3>
-              <p className="text-gray-400">
+              <p className="text-slate-400">
                 Thank you for reaching out! I'll get back to you within 24 hours.
               </p>
             </div>
@@ -136,7 +136,7 @@ const Contact = () => {
       )}
 
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
-        <div className="rounded-[2rem] border border-white/10 bg-white/5 p-8 shadow-2xl backdrop-blur-xl">
+        <div className="rounded-[2rem] border border-violet-400/10 bg-violet-500/5 p-8 shadow-2xl backdrop-blur-xl">
           <form onSubmit={handleSubmit} className="space-y-6">
             {error && (
               <div className="rounded-xl border border-red-400/30 bg-red-400/10 px-4 py-3 text-red-300">
@@ -145,7 +145,7 @@ const Contact = () => {
             )}
 
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-300">Name</label>
+              <label className="mb-2 block text-sm font-medium text-slate-300">Name</label>
               <input
                 type="text"
                 name="name"
@@ -162,7 +162,7 @@ const Contact = () => {
             </div>
 
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-300">Email</label>
+              <label className="mb-2 block text-sm font-medium text-slate-300">Email</label>
               <input
                 type="email"
                 name="email"
@@ -179,7 +179,7 @@ const Contact = () => {
             </div>
 
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-300">Message</label>
+              <label className="mb-2 block text-sm font-medium text-slate-300">Message</label>
               <textarea
                 name="message"
                 value={formData.message}
@@ -198,7 +198,7 @@ const Contact = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-orange-500 px-7 py-3.5 text-sm font-semibold text-white transition duration-300 hover:scale-[1.02] hover:bg-orange-400 disabled:opacity-60"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-violet-600 px-7 py-3.5 text-sm font-semibold text-white transition duration-300 hover:scale-[1.02] hover:bg-violet-500 disabled:opacity-60"
             >
               {isSubmitting ? (
                 <>
@@ -216,7 +216,7 @@ const Contact = () => {
         </div>
 
         <div className="space-y-6">
-          <div className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur-xl">
+          <div className="rounded-[2rem] border border-violet-400/10 bg-violet-500/5 p-6 shadow-2xl backdrop-blur-xl">
             <h3 className="mb-6 text-xl font-semibold text-white">Get In Touch</h3>
             <div className="space-y-5">
               {[
@@ -225,26 +225,26 @@ const Contact = () => {
                 { icon: MapPin, label: "Location", value: "India" },
               ].map(({ icon: Icon, label, value }) => (
                 <div key={label} className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-500/15 text-orange-300">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-violet-500/15 text-violet-300">
                     <Icon className="h-5 w-5" />
                   </div>
                   <div>
                     <p className="font-medium text-white">{label}</p>
-                    <p className="text-sm text-gray-400">{value}</p>
+                    <p className="text-sm text-slate-400">{value}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur-xl">
+          <div className="rounded-[2rem] border border-violet-400/10 bg-violet-500/5 p-6 shadow-2xl backdrop-blur-xl">
             <h3 className="mb-4 text-xl font-semibold text-white">Follow Me</h3>
             <div className="flex gap-4">
               <a
                 href="https://github.com/27082004muskan"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full border border-white/10 bg-[#11151c] p-3 text-gray-300 transition duration-300 hover:-translate-y-1 hover:border-orange-400/40 hover:text-white"
+                className="rounded-full border border-violet-400/10 bg-[#0d1528] p-3 text-slate-300 transition duration-300 hover:-translate-y-1 hover:border-violet-400/40 hover:text-white"
               >
                 <Github className="h-5 w-5" />
               </a>
@@ -252,24 +252,24 @@ const Contact = () => {
                 href="https://www.linkedin.com/in/muskan-gupta-639065250/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full border border-white/10 bg-[#11151c] p-3 text-gray-300 transition duration-300 hover:-translate-y-1 hover:border-orange-400/40 hover:text-white"
+                className="rounded-full border border-violet-400/10 bg-[#0d1528] p-3 text-slate-300 transition duration-300 hover:-translate-y-1 hover:border-violet-400/40 hover:text-white"
               >
                 <Linkedin className="h-5 w-5" />
               </a>
             </div>
           </div>
 
-          <div className="rounded-[2rem] border border-white/10 bg-gradient-to-r from-orange-500/10 to-blue-500/10 p-6 backdrop-blur-xl">
+          <div className="rounded-[2rem] border border-violet-400/10 bg-gradient-to-r from-violet-500/10 to-cyan-500/10 p-6 backdrop-blur-xl">
             <h3 className="mb-3 text-xl font-semibold text-white">Let's Work Together</h3>
-            <p className="text-sm leading-7 text-gray-300">
+            <p className="text-sm leading-7 text-slate-300">
               I'm always interested in new opportunities and exciting projects.
               Whether you have a specific project in mind or just want to connect, feel free to reach out!
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
-              <span className="rounded-full border border-orange-400/20 bg-orange-500/15 px-3 py-1 text-xs font-medium text-orange-200">
+              <span className="rounded-full border border-violet-400/20 bg-violet-500/15 px-3 py-1 text-xs font-medium text-violet-200">
                 Available for Freelance
               </span>
-              <span className="rounded-full border border-blue-400/20 bg-blue-500/15 px-3 py-1 text-xs font-medium text-blue-200">
+              <span className="rounded-full border border-cyan-400/20 bg-cyan-500/15 px-3 py-1 text-xs font-medium text-cyan-200">
                 Open to Opportunities
               </span>
             </div>

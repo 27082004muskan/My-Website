@@ -32,16 +32,16 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-gray-900/80 backdrop-blur-lg border-b border-gray-800/50 shadow-lg'
-          : 'bg-gray-900/80 backdrop-blur-sm'
+          ? 'bg-[#070b14]/90 backdrop-blur-lg border-b border-violet-500/20 shadow-lg shadow-violet-950/30'
+          : 'bg-[#070b14]/80 backdrop-blur-sm'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo and Name */}
           <Link to="/" className="flex items-center space-x-3 group">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gray-50 via-slate-50 to-gray-100 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-200">
-              <Code className="w-6 h-6 text-gray-500" />
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-violet-500 via-fuchsia-500 to-cyan-400 flex items-center justify-center shadow-lg shadow-violet-500/30 group-hover:scale-105 transition-transform duration-200">
+              <Code className="w-6 h-6 text-white" />
             </div>
             <div className="flex flex-col">
              
@@ -60,13 +60,13 @@ const Navbar = () => {
                 className={`relative text-sm font-medium tracking-wide px-1 py-1 transition-all duration-200 
                 ${
                   isActive(item.path)
-                    ? 'text-orange-300'
-                    : 'text-gray-300 hover:text-orange-300'
+                    ? 'text-violet-300'
+                    : 'text-slate-300 hover:text-violet-300'
                 }`}
               >
                 <span className="relative z-10">{item.name}</span>
                 <span
-                  className={`absolute inset-x-0 -bottom-1 h-0.5 rounded-full bg-gradient-to-r from-orange-400 via-stone-500 to-orange-600 transition-all duration-300 origin-center ${
+                  className={`absolute inset-x-0 -bottom-1 h-0.5 rounded-full bg-gradient-to-r from-violet-400 via-fuchsia-400 to-cyan-400 transition-all duration-300 origin-center ${
                     isActive(item.path)
                       ? 'scale-x-100 opacity-100'
                       : 'scale-x-0 opacity-0 hover:scale-x-100 hover:opacity-100'
@@ -82,7 +82,7 @@ const Navbar = () => {
               href="https://www.linkedin.com/in/muskan-gupta-639065250/"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full text-gray-300 hover:text-orange-300 bg-gray-800/50 hover:bg-gray-700/90 hover:via-stone-600/85 hover:to-orange-700/70 border border-gray-700/60 hover:border-orange-500/70 shadow-sm shadow-orange-500/30 transition-all duration-200"
+              className="p-2 rounded-full text-slate-300 hover:text-violet-300 bg-[#121c32]/80 hover:bg-violet-500/20 border border-violet-500/20 hover:border-violet-400/50 shadow-sm shadow-violet-500/20 transition-all duration-200"
             >
               <Linkedin className="w-5 h-5" />
             </a>
@@ -90,13 +90,13 @@ const Navbar = () => {
               href="https://github.com/27082004muskan"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full text-gray-300 hover:text-orange-300 bg-gray-800/50 hover:bg-gray-700/90 hover:via-stone-600/85 hover:to-orange-700/70 border border-gray-700/60 hover:border-orange-500/70 shadow-sm shadow-orange-500/30 transition-all duration-200"
+              className="p-2 rounded-full text-slate-300 hover:text-violet-300 bg-[#121c32]/80 hover:bg-violet-500/20 border border-violet-500/20 hover:border-violet-400/50 shadow-sm shadow-violet-500/20 transition-all duration-200"
             >
               <Github className="w-5 h-5" />
             </a>
             <a
               href="mailto:gmuskan.2708@gmail.com"
-              className="p-2 rounded-full text-gray-300 hover:text-orange-300 bg-gray-800/50 hover:bg-gray-700/90 hover:via-stone-600/85 hover:to-orange-700/70 border border-gray-700/60 hover:border-orange-500/70 shadow-sm shadow-orange-500/30 transition-all duration-200"
+              className="p-2 rounded-full text-slate-300 hover:text-violet-300 bg-[#121c32]/80 hover:bg-violet-500/20 border border-violet-500/20 hover:border-violet-400/50 shadow-sm shadow-violet-500/20 transition-all duration-200"
             >
               <Mail className="w-5 h-5" />
             </a>
@@ -105,7 +105,7 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden text-gray-300 hover:text-white p-2 hover:bg-gray-800/50 rounded-lg transition-colors duration-200 hover:bg-gray-700 hover:from-gray-700/90 hover:via-stone-600/85 hover:to-orange-700/70"
+            className="md:hidden text-slate-300 hover:text-white p-2 hover:bg-violet-500/20 rounded-lg transition-colors duration-200"
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -113,7 +113,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden bg-gray-900/95 backdrop-blur-lg border-t border-gray-800/50">
+          <div className="md:hidden bg-[#070b14]/95 backdrop-blur-lg border-t border-violet-500/20">
             <div className="px-3 pt-3 pb-4 space-y-1">
               {navItems.map((item) => (
                 <Link
@@ -122,21 +122,21 @@ const Navbar = () => {
                   onClick={() => setIsMenuOpen(false)}
                   className={`block w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                     isActive(item.path)
-                      ? 'text-orange-300 bg-gray-800/80 border border-orange-500/70'
-                      : 'text-gray-300 hover:text-orange-500 hover:bg-gray-800/30 border border-transparent hover:border-orange-500/60 hover:bg-gray-700 hover:from-gray-700/90 hover:via-stone-600/85 hover:to-orange-700/70'
+                      ? 'text-violet-300 bg-violet-500/15 border border-violet-400/50'
+                      : 'text-slate-300 hover:text-violet-300 hover:bg-violet-500/10 border border-transparent hover:border-violet-400/30'
                   }`}
                 >
                   {item.name}
                 </Link>
               ))}
 
-              <div className="flex items-center justify-between pt-3 border-t border-gray-800/50 mt-2">
+              <div className="flex items-center justify-between pt-3 border-t border-violet-500/20 mt-2">
                 <div className="flex space-x-3">
                   <a
                     href="https://www.linkedin.com/in/muskan-gupta-639065250/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-full text-gray-300 hover:text-orange-300 bg-gray-800/60 hover:bg-gray-700/90 hover:via-stone-600/85 hover:to-orange-700/70 border border-gray-700/60 hover:border-orange-500/70 transition-all duration-200"
+                    className="p-2 rounded-full text-slate-300 hover:text-violet-300 bg-[#121c32]/80 hover:bg-violet-500/20 border border-violet-500/20 hover:border-violet-400/50 transition-all duration-200"
                   >
                     <Linkedin className="w-5 h-5" />
                   </a>
@@ -144,13 +144,13 @@ const Navbar = () => {
                     href="https://github.com/27082004muskan"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 rounded-full text-gray-300 hover:text-orange-300 bg-gray-800/60 hover:bg-gray-700/90 hover:via-stone-600/85 hover:to-orange-700/70 border border-gray-700/60 hover:border-orange-500/70 transition-all duration-200"
+                    className="p-2 rounded-full text-slate-300 hover:text-violet-300 bg-[#121c32]/80 hover:bg-violet-500/20 border border-violet-500/20 hover:border-violet-400/50 transition-all duration-200"
                   >
                     <Github className="w-5 h-5" />
                   </a>
                   <a
                     href="mailto:gmuskan.2708@gmail.com"
-                    className="p-2 rounded-full text-gray-300 hover:text-orange-300 bg-gray-800/60 hover:bg-gray-700/90 hover:via-stone-600/85 hover:to-orange-700/70 border border-gray-700/60 hover:border-orange-500/70 transition-all duration-200"
+                    className="p-2 rounded-full text-slate-300 hover:text-violet-300 bg-[#121c32]/80 hover:bg-violet-500/20 border border-violet-500/20 hover:border-violet-400/50 transition-all duration-200"
                   >
                     <Mail className="w-5 h-5" />
                   </a>

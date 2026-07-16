@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+@theme {
+  --color-surface-base: #070b14;
+  --color-surface-alt: #0a1020;
+  --color-surface-card: #0d1528;
+  --color-surface-elevated: #121c32;
+  --color-surface-footer: #141f36;
+  --color-surface-muted: #1a2848;
+  --color-accent-primary: #8b5cf6;
+  --color-accent-secondary: #22d3ee;
+}
+
+body {
+  background-color: var(--color-surface-base);
+  color: #e2e8f0;
+}
+
 /* Previous animations... */
 
 /* Self-Moving Card Animations */

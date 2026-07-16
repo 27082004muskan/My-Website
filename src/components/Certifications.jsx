@@ -149,7 +149,7 @@ const Certifications = () => {
 
     return (
       <div
-        className="group cursor-pointer rounded-2xl border border-white/10 bg-[#11151c] p-6 transition duration-300 hover:border-orange-400/30 hover:bg-white/10"
+        className="group cursor-pointer rounded-2xl border border-violet-400/10 bg-[#0d1528] p-6 transition duration-300 hover:border-violet-400/30 hover:bg-violet-500/10"
         onClick={() => handleDownload(cert)}
       >
         <div className="mb-4 flex items-center justify-between">
@@ -161,15 +161,15 @@ const Certifications = () => {
               <Icon className="h-5 w-5" style={{ color: cert.color }} />
             </div>
             <div>
-              <h4 className="text-lg font-semibold text-white group-hover:text-orange-300">
+              <h4 className="text-lg font-semibold text-white group-hover:text-violet-300">
                 {cert.title}
               </h4>
-              <p className="text-sm text-gray-400">{cert.issuer}</p>
+              <p className="text-sm text-slate-400">{cert.issuer}</p>
             </div>
           </div>
-          <Download className="h-5 w-5 text-gray-500 transition-colors group-hover:text-orange-400" />
+          <Download className="h-5 w-5 text-slate-500 transition-colors group-hover:text-violet-400" />
         </div>
-        <div className="flex items-center gap-2 text-sm text-gray-500">
+        <div className="flex items-center gap-2 text-sm text-slate-500">
           <Calendar className="h-4 w-4" />
           <span>{cert.date}</span>
         </div>
@@ -188,7 +188,7 @@ const Certifications = () => {
     >
       <div className="mb-16">
         <div className="mb-8 flex items-center gap-4">
-          <div className="rounded-xl bg-orange-500/15 p-3 text-orange-300">
+          <div className="rounded-xl bg-violet-500/15 p-3 text-violet-300">
             <Code className="h-6 w-6" />
           </div>
           <h3 className="text-2xl font-semibold text-white">Web Development</h3>
@@ -202,7 +202,7 @@ const Certifications = () => {
 
       <div>
         <div className="mb-8 flex items-center gap-4">
-          <div className="rounded-xl bg-blue-500/15 p-3 text-blue-300">
+          <div className="rounded-xl bg-cyan-500/15 p-3 text-cyan-300">
             <BarChart3 className="h-6 w-6" />
           </div>
           <h3 className="text-2xl font-semibold text-white">Data Analytics</h3>
@@ -215,10 +215,10 @@ const Certifications = () => {
       </div>
 
       <div className="mt-16">
-        <div className="inline-flex items-center gap-3 rounded-2xl border border-orange-500/20 bg-orange-500/10 px-10 py-6 backdrop-blur-sm">
-          <Star className="h-5 w-5 text-orange-400" />
-          <span className="text-lg font-semibold text-gray-200">Continuously upskilling through industry programs</span>
-          <Star className="h-5 w-5 text-orange-400" />
+        <div className="inline-flex items-center gap-3 rounded-2xl border border-violet-500/20 bg-violet-500/10 px-10 py-6 backdrop-blur-sm">
+          <Star className="h-5 w-5 text-violet-400" />
+          <span className="text-lg font-semibold text-slate-200">Continuously upskilling through industry programs</span>
+          <Star className="h-5 w-5 text-violet-400" />
         </div>
       </div>
     </PageLayout>

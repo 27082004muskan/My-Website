@@ -13,10 +13,10 @@ const PageLayout = ({
   return (
     <section
       id={id}
-      className={`relative min-h-screen overflow-hidden bg-[#0b0d12] pt-20 text-white ${className}`}
+      className={`relative min-h-screen overflow-hidden bg-[#070b14] pt-20 text-white ${className}`}
     >
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(249,115,22,0.16),_transparent_35%),radial-gradient(circle_at_bottom_right,_rgba(59,130,246,0.14),_transparent_30%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(139,92,246,0.18),_transparent_35%),radial-gradient(circle_at_bottom_right,_rgba(34,211,238,0.14),_transparent_30%)]" />
         <div className="absolute inset-0 opacity-[0.06] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:72px_72px]" />
       </div>
 
@@ -24,14 +24,14 @@ const PageLayout = ({
         {(badge || label || title || description) && (
           <div className="mb-16 max-w-3xl">
             {badge && (
-              <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-gray-300 backdrop-blur-md">
-                {BadgeIcon && <BadgeIcon className="h-4 w-4 text-orange-400" />}
+              <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full border border-violet-400/15 bg-violet-500/10 px-4 py-2 text-sm text-slate-300 backdrop-blur-md">
+                {BadgeIcon && <BadgeIcon className="h-4 w-4 text-violet-400" />}
                 <span>{badge}</span>
               </div>
             )}
 
             {label && (
-              <p className="mb-3 text-sm font-medium uppercase tracking-[0.28em] text-orange-300/80">
+              <p className="mb-3 text-sm font-medium uppercase tracking-[0.28em] text-violet-300/80">
                 {label}
               </p>
             )}
@@ -43,7 +43,7 @@ const PageLayout = ({
             )}
 
             {description && (
-              <p className="mt-5 max-w-2xl text-base leading-8 text-gray-400 sm:text-lg">
+              <p className="mt-5 max-w-2xl text-base leading-8 text-slate-400 sm:text-lg">
                 {description}
               </p>
             )}

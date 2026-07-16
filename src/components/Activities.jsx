@@ -96,7 +96,7 @@ const Activities = () => {
     const Icon = activity.icon;
 
     return (
-      <div className="group relative flex h-64 w-[320px] flex-none cursor-pointer flex-col justify-between rounded-[1.5rem] border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur-xl transition duration-500 hover:-translate-y-2 hover:border-orange-400/30">
+      <div className="group relative flex h-64 w-[320px] flex-none cursor-pointer flex-col justify-between rounded-[1.5rem] border border-violet-400/10 bg-violet-500/5 p-6 shadow-2xl backdrop-blur-xl transition duration-500 hover:-translate-y-2 hover:border-violet-400/30">
         <div>
           <div className="mb-4 flex items-center justify-between">
             <div
@@ -105,19 +105,19 @@ const Activities = () => {
             >
               <Icon className="h-6 w-6" style={{ color: activity.color }} />
             </div>
-            <span className="rounded-full border border-white/10 bg-[#11151c] px-3 py-1 text-xs font-medium text-gray-300 group-hover:border-orange-400/30 group-hover:text-orange-200">
+            <span className="rounded-full border border-violet-400/10 bg-[#0d1528] px-3 py-1 text-xs font-medium text-slate-300 group-hover:border-violet-400/30 group-hover:text-violet-200">
               {activity.category}
             </span>
           </div>
-          <h3 className="mb-2 text-xl font-semibold text-white group-hover:text-orange-300">{activity.title}</h3>
-          <p className="text-sm leading-relaxed text-gray-400">{activity.desc}</p>
+          <h3 className="mb-2 text-xl font-semibold text-white group-hover:text-violet-300">{activity.title}</h3>
+          <p className="text-sm leading-relaxed text-slate-400">{activity.desc}</p>
         </div>
-        <div className="flex items-center justify-between border-t border-white/10 pt-4">
-          <div className="flex items-center gap-2 text-sm text-gray-500">
+        <div className="flex items-center justify-between border-t border-violet-400/10 pt-4">
+          <div className="flex items-center gap-2 text-sm text-slate-500">
             <Calendar className="h-4 w-4" />
             <span className="font-medium">{activity.date}</span>
           </div>
-          <ChevronRight className="h-5 w-5 text-gray-500 transition duration-300 group-hover:translate-x-1 group-hover:text-orange-300" />
+          <ChevronRight className="h-5 w-5 text-slate-500 transition duration-300 group-hover:translate-x-1 group-hover:text-violet-300" />
         </div>
       </div>
     );
@@ -139,8 +139,8 @@ const Activities = () => {
             onClick={() => setSelectedYear(year)}
             className={`rounded-full px-6 py-3 text-sm font-semibold transition duration-300 ${
               selectedYear === year
-                ? 'bg-orange-500 text-white shadow-lg shadow-orange-500/25'
-                : 'border border-white/10 bg-white/5 text-gray-300 hover:border-orange-400/30 hover:bg-white/10'
+                ? 'bg-violet-600 text-white shadow-lg shadow-violet-500/25'
+                : 'border border-violet-400/10 bg-violet-500/5 text-slate-300 hover:border-violet-400/30 hover:bg-violet-500/10'
             }`}
           >
             {year}
@@ -161,7 +161,7 @@ const Activities = () => {
 
         <button
           onClick={() => scrollHorizontal('left')}
-          className={`absolute left-0 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-[#11151c]/90 text-white shadow-lg backdrop-blur-xl transition duration-300 hover:border-orange-400/40 hover:bg-orange-500 ${
+          className={`absolute left-0 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-violet-400/10 bg-[#0d1528]/90 text-white shadow-lg backdrop-blur-xl transition duration-300 hover:border-violet-400/40 hover:bg-violet-600 ${
             !canScrollLeft ? 'cursor-not-allowed opacity-30' : ''
           }`}
           disabled={!canScrollLeft}
@@ -171,7 +171,7 @@ const Activities = () => {
 
         <button
           onClick={() => scrollHorizontal('right')}
-          className={`absolute right-0 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-[#11151c]/90 text-white shadow-lg backdrop-blur-xl transition duration-300 hover:border-orange-400/40 hover:bg-orange-500 ${
+          className={`absolute right-0 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-violet-400/10 bg-[#0d1528]/90 text-white shadow-lg backdrop-blur-xl transition duration-300 hover:border-violet-400/40 hover:bg-violet-600 ${
             !canScrollRight ? 'cursor-not-allowed opacity-30' : ''
           }`}
           disabled={!canScrollRight}
@@ -180,13 +180,13 @@ const Activities = () => {
         </button>
       </div>
 
-      <div className="mt-16 border-t border-white/10 pt-12">
+      <div className="mt-16 border-t border-violet-400/10 pt-12">
         <div className="flex items-center gap-4">
-          <Briefcase className="h-6 w-6 text-orange-400" />
+          <Briefcase className="h-6 w-6 text-violet-400" />
           <span className="text-xl font-semibold text-white">
             {activitiesByYear[selectedYear].length} Activities in {selectedYear}
           </span>
-          <Calendar className="h-6 w-6 text-orange-400" />
+          <Calendar className="h-6 w-6 text-violet-400" />
         </div>
       </div>
 

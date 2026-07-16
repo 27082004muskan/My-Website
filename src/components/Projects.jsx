@@ -76,24 +76,24 @@ const Projects = () => {
   ];
 
   const cardClass =
-    "group rounded-[1.5rem] border border-white/10 bg-white/5 shadow-2xl backdrop-blur-xl transition duration-300 hover:-translate-y-2 hover:border-orange-400/20 hover:shadow-orange-500/10";
+    "group rounded-[1.5rem] border border-violet-400/10 bg-violet-500/5 shadow-2xl backdrop-blur-xl transition duration-300 hover:-translate-y-2 hover:border-violet-400/20 hover:shadow-violet-500/10";
 
   const ProjectCard = ({ project }) => (
     <div className={cardClass}>
       <div className="relative flex h-48 items-center justify-center overflow-hidden rounded-t-[1.5rem]">
         <img src={project.image} alt={project.title} className="h-full w-full object-cover" />
         {project.duration && (
-          <div className="absolute bottom-3 left-3 rounded-full border border-white/10 bg-black/60 px-3 py-1 text-xs font-medium text-orange-300 backdrop-blur-sm">
+          <div className="absolute bottom-3 left-3 rounded-full border border-violet-400/20 bg-black/60 px-3 py-1 text-xs font-medium text-violet-300 backdrop-blur-sm">
             {project.duration}
           </div>
         )}
       </div>
 
       <div className="p-6">
-        <h3 className="mb-3 text-xl font-semibold text-gray-200 transition-colors duration-200 group-hover:text-orange-300">
+        <h3 className="mb-3 text-xl font-semibold text-slate-200 transition-colors duration-200 group-hover:text-violet-300">
           {project.title}
         </h3>
-        <p className="mb-4 text-sm leading-relaxed text-gray-400">
+        <p className="mb-4 text-sm leading-relaxed text-slate-400">
           {project.description}
         </p>
 
@@ -101,7 +101,7 @@ const Projects = () => {
           {project.tech.map((tech, techIndex) => (
             <span
               key={techIndex}
-              className="rounded-full border border-white/10 bg-[#121821] px-3 py-1 text-xs font-medium text-orange-300"
+              className="rounded-full border border-violet-400/15 bg-[#101828] px-3 py-1 text-xs font-medium text-violet-300"
             >
               {tech}
             </span>
@@ -114,7 +114,7 @@ const Projects = () => {
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center space-x-2 text-gray-300 transition-colors duration-200 hover:text-orange-300"
+              className="flex items-center space-x-2 text-slate-300 transition-colors duration-200 hover:text-violet-300"
             >
               <ExternalLink className="h-4 w-4" />
               <span className="text-sm font-medium">Live Demo</span>
@@ -125,7 +125,7 @@ const Projects = () => {
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center space-x-2 text-orange-300 transition-colors duration-200 hover:text-orange-200"
+            className="flex items-center space-x-2 text-violet-300 transition-colors duration-200 hover:text-violet-200"
           >
             <Github className="h-4 w-4" />
             <span className="text-sm font-medium">GitHub</span>
